@@ -56,5 +56,5 @@ I will reguard the follwing items as single words becasue it makes class names a
 - QWHelloWorld
 - JoomlaTime
 
-###Do these
+### Do these
 - `#__com_qwhelloworld` --> `#__com_joomlatime`
