@@ -35,3 +35,7 @@ Visit the extension's software page at: https://quantumwarp.com/projects/
 ## References
 I used the following links and resources to build this plugin.
 - https://quantumwarp.com/
+
+## Tutorial References
+- [Based on](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Introduction)
+- [Based on](https://github.com/joomla/Joomla-3.2-Hello-World-Component)
