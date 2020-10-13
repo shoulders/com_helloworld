@@ -35,20 +35,20 @@ Visit the extension's software page at: https://quantumwarp.com/projects/
 ## References
 I used the following links and resources to build this plugin.
 - https://quantumwarp.com/
-- (Joomla API) https://api.joomla.org/
-- (Joomla Namespaces) https://api.joomla.org/cms-3/namespaces/default.html
-- (Component Program Flow) https://docs.joomla.org/Component_Program_Flow
-- (Joomla Cache) ttps://docs.joomla.org/Cache
+- (Joomla API)https://api.joomla.org/
+- (Joomla Namespaces)https://api.joomla.org/cms-3/namespaces/default.html
+- (Component Program Flow)https://docs.joomla.org/Component_Program_Flow
+- (Joomla Cache)https://docs.joomla.org/Cache
 
 
 ## Tutorial References
 - [Based on this office Joomla tutorial](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Introduction)
-- (Robbie Jackson YouTube Page) https://www.youtube.com/channel/UCMxpLXLiuFKxSNtbn8cCW3g
-- (Robbie Jackson Tutorial PowerPoint) https://docs.google.com/presentation/d/11g6qd64zmQObe8xMuEVubdUeIp0DcZ1wr8dq7LcrXIA/
-- (Joomla Tutorial - Latest Files) https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_Custom_Fields
-- (Tutorial Files, by step, up to step 26) https://github.com/Stevec4/Joomla-HelloWorld
+- (Robbie Jackson YouTube Page)https://www.youtube.com/channel/UCMxpLXLiuFKxSNtbn8cCW3g
+- (Robbie Jackson Tutorial PowerPoint)https://docs.google.com/presentation/d/11g6qd64zmQObe8xMuEVubdUeIp0DcZ1wr8dq7LcrXIA/
+- (Joomla Tutorial - Latest Files)https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_Custom_Fields
+- (Tutorial Files, by step, up to step 26)https://github.com/Stevec4/Joomla-HelloWorld
 - https://github.com/joomla/Joomla-3.2-Hello-World-Component - This is old and should not be used
-- (Free Udemy Joomla Course) https://www.udemy.com/course/joomla-development-101/
+- (Free Udemy Joomla Course)https://www.udemy.com/course/joomla-development-101/
 
 ## How to rename the component
 I will reguard the follwing items as single words becasue it makes class names and standards easier to follow. These may be put back to seperate words etc.. in your translations:
