@@ -13,7 +13,7 @@ categories, component configuration, ACL, install/uninstall/update script file, 
 language filter facility, Modals, Language Associations, checkout, item ordering, Levels, Versioning, Tags, Access configuration, Batch processing, 
 Cache, Feed, Update Server configuration, Custom Fileds
 
-### I will add
+### I will/have added
 repeatable fields....
 
 ## How to use this software

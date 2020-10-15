@@ -27,7 +27,7 @@ JLoader::register('HelloWorldHelper', JPATH_COMPONENT . '/helpers/helloworld.php
 $controller = JControllerLegacy::getInstance('HelloWorld');
 
 // Perform the Request task
-$controller->execute(JFactory::getApplication()->input->get('task'));;
+$controller->execute(JFactory::getApplication()->input->get('task'));
 
 // Redirect if set by the controller
 $controller->redirect();
