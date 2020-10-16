@@ -11,9 +11,9 @@ use Joomla\CMS\Language\Text;
 
 FormHelper::loadFieldClass('list');
 
-class FormFieldHelloWorldOrdering extends JFormFieldList
+class JFormFieldHelloWorldOrdering extends JFormFieldList
 {
-	protected $type = 'HelloworldOrdering';
+	protected $type = 'helloworldordering';
 
 	/**
 	 * Method to return the options for ordering the helloworld record

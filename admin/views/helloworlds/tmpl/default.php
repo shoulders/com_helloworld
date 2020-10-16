@@ -34,7 +34,7 @@ if ($saveOrder)
 }
 $assoc = Associations::isEnabled();
 $authorFieldwidth = $assoc ? "10%" : "25%";
-JLoader::register('HtmlHelloWorlds', JPATH_ADMINISTRATOR . '/components/com_helloworld/helpers/html/helloworlds.php');
+JLoader::register('JHtmlHelloWorlds', JPATH_ADMINISTRATOR . '/components/com_helloworld/helpers/html/helloworlds.php');
 ?>
 <form action="index.php?option=com_helloworld&view=helloworlds" method="post" id="adminForm" name="adminForm">
         <div id="j-sidebar-container" class="span2">

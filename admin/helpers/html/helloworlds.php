@@ -14,7 +14,7 @@ use Joomla\CMS\Router\Route;
 
 JLoader::register('HelloworldHelper', JPATH_ADMINISTRATOR . '/components/com_helloworld/helpers/helloworld.php');
 
-class HtmlHelloWorlds
+class JHtmlHelloWorlds
 {
 	/**
 	 * Render the list of associated items
