@@ -13,6 +13,7 @@ use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Path;
+use Joomla\CMS\Helper\MediaHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Session\Session;
@@ -164,7 +165,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 			$file['name'] = str_replace(' ', '-', $file['name']);
 
 			// do checks against Media configuration parameters
-			$mediaHelper = new JHelperMedia;
+			$mediaHelper = new MediaHelper;
 			if (!$mediaHelper->canUpload($file))
 			{
 				// The file can't be uploaded - the helper class will have enqueued the error message

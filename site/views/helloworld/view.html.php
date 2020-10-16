@@ -11,6 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
@@ -85,7 +86,7 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		
         $this->addMap();
 		
-		$tagsHelper = new JHelperTags;
+		$tagsHelper = new TagsHelper;
 		$this->item->tags = $tagsHelper->getItemTags('com_helloworld.helloworld' , $this->item->id);
                 
 		$model = $this->getModel();

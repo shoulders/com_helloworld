@@ -5,6 +5,8 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\Registry\Registry;
+
 class HelloworldViewCategory extends JViewCategoryfeed
 {
 	// required so that the parent class can find the helloworld content-type record containing the field mapping details
@@ -25,7 +27,7 @@ class HelloworldViewCategory extends JViewCategoryfeed
 		if (!empty($item->image))
 		{
 			// Convert the JSON-encoded image info into an array
-			$imageDetails = new JRegistry;
+			$imageDetails = new Registry;
 			$imageDetails->loadString($item->image, 'JSON');
 			$src = $imageDetails->get('image','');
 			if (!empty($src))

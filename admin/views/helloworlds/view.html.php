@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\FileLayout;
 use Joomla\CMS\Toolbar\Toolbar;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 
@@ -127,7 +128,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
                         && $this->canDo->get('core.edit.state'))
                 {
                         // we use a standard Joomla layout to get the html for the batch button
-                        $layout = new JLayoutFile('joomla.toolbar.batch');
+                        $layout = new FileLayout('joomla.toolbar.batch');
                         $batchButtonHtml = $layout->render(array('title' => Text::_('JTOOLBAR_BATCH')));
                         $bar->appendButton('Custom', $batchButtonHtml, 'batch');
                 }

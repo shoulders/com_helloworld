@@ -9,6 +9,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Response\JsonResponse;
  
 class HelloWorldViewHelloWorld extends JViewLegacy
 {
@@ -29,17 +30,17 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 			$records = $model->getMapSearchResults($mapbounds);
 			if ($records) 
 			{
-				echo new JResponseJson($records);
+				echo new JsonResponse($records);
 			}
 			else
 			{
-				echo new JResponseJson(null, Text::_('COM_HELLOWORLD_ERROR_NO_RECORDS'), true);
+				echo new JsonResponse(null, Text::_('COM_HELLOWORLD_ERROR_NO_RECORDS'), true);
 			}
 		}
 		else 
 		{
 			$records = array();
-			echo new JResponseJson(null, Text::_('COM_HELLOWORLD_ERROR_NO_MAP_BOUNDS'), true);
+			echo new JsonResponse(null, Text::_('COM_HELLOWORLD_ERROR_NO_MAP_BOUNDS'), true);
 		}
 	}
 }

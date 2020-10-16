@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Session\Session;
 
 /**
@@ -46,7 +47,7 @@ class HelloWorldController extends JControllerLegacy
 	{
 //		if (!Session::checkToken('get')) 
 //		{
-//			echo new JResponseJson(null, Text::_('JINVALID_TOKEN'), true);
+//			echo new JsonResponse(null, Text::_('JINVALID_TOKEN'), true);
 //		}
 //		else 
 //		{

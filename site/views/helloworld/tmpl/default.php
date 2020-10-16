@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\FileLayout;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
@@ -32,7 +33,7 @@ else
 </h1>
 <?php 
 	echo $this->item->description; 
-    $tagLayout = new JLayoutFile('joomla.content.tags');
+    $tagLayout = new FileLayout('joomla.content.tags');
     echo $tagLayout->render($this->item->tags);
     $src = $this->item->imageDetails['image'];
     if ($src)

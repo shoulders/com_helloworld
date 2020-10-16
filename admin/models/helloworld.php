@@ -11,10 +11,12 @@
 defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Table\Table;
+use Joomla\CMS\UCM\UCMType;
 use Joomla\Registry\Registry;
 
 /**
@@ -62,7 +64,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 				$this->user = Factory::getUser();
 				$this->table = $this->getTable();
 				$this->tableClassName = get_class($this->table);
-				$this->contentType = new JUcmType;
+				$this->contentType = new UCMType;
 				$this->type = $this->contentType->getTypeByTable($this->tableClassName);
 			}
 
@@ -133,7 +135,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 
 		if (!empty($item->id))
 		{
-			$tagsHelper = new JHelperTags;
+			$tagsHelper = new TagsHelper;
 			$item->tags = $tagsHelper->getTagIds($item->id, 'com_helloworld.helloworld');
 		}
         

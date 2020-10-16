@@ -12,6 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
+use Joomla\Registry\Registry;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Table\Table;
 
@@ -98,7 +99,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 			if ($this->item = $db->loadObject()) 
 			{
 				// Load the JSON string
-				$params = new JRegistry;
+				$params = new Registry;
 				$params->loadString($this->item->params, 'JSON');
 				$this->item->params = $params;
 
@@ -108,7 +109,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 				$this->item->params = $params;
 
 				// Convert the JSON-encoded image info into an array
-				$image = new JRegistry;
+				$image = new Registry;
 				$image->loadString($this->item->image, 'JSON');
 				$this->item->imageDetails = $image;
 

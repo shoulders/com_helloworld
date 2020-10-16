@@ -9,8 +9,10 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Access\Rules;
 use Joomla\CMS\Filter\OutputFilter;
 use Joomla\CMS\Table\Observer\Tags;
+use Joomla\Registry\Registry;
 use Joomla\CMS\Table\Table;
 
 /**
@@ -44,7 +46,7 @@ class HelloWorldTableHelloWorld extends JTableNested
 		if (isset($array['params']) && is_array($array['params']))
 		{
 			// Convert the params field to a string.
-			$parameter = new JRegistry;
+			$parameter = new Registry;
 			$parameter->loadArray($array['params']);
 			$array['params'] = (string)$parameter;
 		}
@@ -52,7 +54,7 @@ class HelloWorldTableHelloWorld extends JTableNested
         if (isset($array['imageinfo']) && is_array($array['imageinfo']))
 		{
 			// Convert the imageinfo array to a string.
-			$parameter = new JRegistry;
+			$parameter = new Registry;
 			$parameter->loadArray($array['imageinfo']);
 			$array['image'] = (string)$parameter;
 		}
@@ -60,7 +62,7 @@ class HelloWorldTableHelloWorld extends JTableNested
         // Bind the rules.
 		if (isset($array['rules']) && is_array($array['rules']))
 		{
-			$rules = new JAccessRules($array['rules']);
+			$rules = new Rules($array['rules']);
 			$this->setRules($rules);
 		}
         

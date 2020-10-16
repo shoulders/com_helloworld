@@ -14,6 +14,7 @@ use Joomla\CMS\Access\Access;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\Object\CMSObject;
 
 /**
  * HelloWorld component helper.
@@ -75,7 +76,7 @@ abstract class HelloWorldHelper extends JHelperContent
 	 */
 	public static function getActions($component = '', $section = '', $messageId = 0)
 	{	
-		$result	= new JObject;
+		$result	= new CMSObject;
 
 		if (empty($messageId)) {
 			$assetName = 'com_helloworld';
