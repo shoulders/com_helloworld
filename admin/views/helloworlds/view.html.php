@@ -10,6 +10,12 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Toolbar\Toolbar;
+use Joomla\CMS\Toolbar\ToolbarHelper;
+
 /**
  * HelloWorlds View
  *
@@ -27,7 +33,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
         function display($tpl = null)
         {
                 // Get application
-                $app = JFactory::getApplication();
+                $app = Factory::getApplication();
 
                 // Get data from the model
                 $this->items                    = $this->get('Items');
@@ -37,7 +43,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
                 $this->activeFilters    = $this->get('ActiveFilters');
         
                 // What Access Permissions does this user have? What can (s)he do?
-                $this->canDo = JHelperContent::getActions('com_helloworld');
+                $this->canDo = ContentHelper::getActions('com_helloworld');
 
                 // Check for errors.
                 if (count($errors = $this->get('Errors')))
@@ -90,31 +96,31 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
          */
         protected function addToolBar()
         {
-                $title = JText::_('COM_HELLOWORLD_MANAGER_HELLOWORLDS');
+                $title = Text::_('COM_HELLOWORLD_MANAGER_HELLOWORLDS');
 
-                $bar = JToolbar::getInstance('toolbar');
+                $bar = Toolbar::getInstance('toolbar');
 
                 if ($this->pagination->total)
                 {
                         $title .= "<span style='font-size: 0.5em; vertical-align: middle;'>(" . $this->pagination->total . ")</span>";
                 }
 
-                JToolBarHelper::title($title, 'helloworld');
+                ToolbarHelper::title($title, 'helloworld');
                 if ($this->canDo->get('core.create')) 
                 {
-                        JToolBarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
+                        ToolbarHelper::addNew('helloworld.add', 'JTOOLBAR_NEW');
                 }
                 if ($this->canDo->get('core.edit')) 
                 {
-                        JToolBarHelper::editList('helloworld.edit', 'JTOOLBAR_EDIT');
+                        ToolbarHelper::editList('helloworld.edit', 'JTOOLBAR_EDIT');
                 }
                 if ($this->canDo->get('core.delete')) 
                 {
-                        JToolBarHelper::deleteList('', 'helloworlds.delete', 'JTOOLBAR_DELETE');
+                        ToolbarHelper::deleteList('', 'helloworlds.delete', 'JTOOLBAR_DELETE');
                 }
-                if ($this->canDo->get('core.edit') || JFactory::getUser()->authorise('core.manage', 'com_checkin'))
+                if ($this->canDo->get('core.edit') || Factory::getUser()->authorise('core.manage', 'com_checkin'))
                 {
-                        JToolBarHelper::checkin('helloworlds.checkin');
+                        ToolbarHelper::checkin('helloworlds.checkin');
                 }
                 // Add a batch button
                 if ($this->canDo->get('core.create') && $this->canDo->get('core.edit')
@@ -122,13 +128,13 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
                 {
                         // we use a standard Joomla layout to get the html for the batch button
                         $layout = new JLayoutFile('joomla.toolbar.batch');
-                        $batchButtonHtml = $layout->render(array('title' => JText::_('JTOOLBAR_BATCH')));
+                        $batchButtonHtml = $layout->render(array('title' => Text::_('JTOOLBAR_BATCH')));
                         $bar->appendButton('Custom', $batchButtonHtml, 'batch');
                 }
                 if ($this->canDo->get('core.admin')) 
                 {
-                        JToolBarHelper::divider();
-                        JToolBarHelper::preferences('com_helloworld');
+                        ToolbarHelper::divider();
+                        ToolbarHelper::preferences('com_helloworld');
                 }
         }
         /**
@@ -138,7 +144,7 @@ class HelloWorldViewHelloWorlds extends JViewLegacy
          */
         protected function setDocument() 
         {
-                $document = JFactory::getDocument();
-                $document->setTitle(JText::_('COM_HELLOWORLD_ADMINISTRATION'));
+                $document = Factory::getDocument();
+                $document->setTitle(Text::_('COM_HELLOWORLD_ADMINISTRATION'));
         }
 }

@@ -5,7 +5,11 @@
 
 defined('JPATH_BASE') or die;
 
-JFormHelper::loadFieldClass('list');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\FormHelper;
+use Joomla\CMS\Language\Text;
+
+FormHelper::loadFieldClass('list');
 
 class JFormFieldHelloworldOrdering extends JFormFieldList
 {
@@ -28,7 +32,7 @@ class JFormFieldHelloworldOrdering extends JFormFieldList
 			return false;
 		}
 
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true)
 			->select('a.id AS value, a.greeting AS text')
 			->from('#__helloworld AS a')
@@ -49,9 +53,9 @@ class JFormFieldHelloworldOrdering extends JFormFieldList
 		}
 
 		$options = array_merge(
-			array(array('value' => '-1', 'text' => JText::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_VALUE_FIRST'))),
+			array(array('value' => '-1', 'text' => Text::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_VALUE_FIRST'))),
 			$options,
-			array(array('value' => '-2', 'text' => JText::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_VALUE_LAST')))
+			array(array('value' => '-2', 'text' => Text::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_VALUE_LAST')))
 		);
 
 		// Merge any additional options in the XML definition.
@@ -71,7 +75,7 @@ class JFormFieldHelloworldOrdering extends JFormFieldList
 	{
 		if ($this->form->getValue('id', 0) == 0)
 		{
-			return '<span class="readonly">' . JText::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_TEXT') . '</span>';
+			return '<span class="readonly">' . Text::_('COM_HELLOWORLD_ITEM_FIELD_ORDERING_TEXT') . '</span>';
 		}
 		else
 		{

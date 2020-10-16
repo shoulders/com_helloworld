@@ -5,6 +5,13 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+
 JLoader::register('HelloworldHelper', JPATH_ADMINISTRATOR . '/components/com_helloworld/helpers/helloworld.php');
 
 class JHtmlHelloworlds
@@ -24,7 +31,7 @@ class JHtmlHelloworlds
 		$html = '';
 
 		// Get the associations
-		if ($associations = JLanguageAssociations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', (int)$id))
+		if ($associations = Associations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', (int)$id))
 		{
 			foreach ($associations as $tag => $associated)
 			{
@@ -32,7 +39,7 @@ class JHtmlHelloworlds
 			}
 
 			// get the relevant category titles and languages, for the tooltip
-			$db = JFactory::getDbo();
+			$db = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select('h.*')
 				->select('l.sef as lang_sef')
@@ -60,9 +67,9 @@ class JHtmlHelloworlds
 				foreach ($items as &$item)
 				{
 					$text    = $item->lang_sef ? strtoupper($item->lang_sef) : 'XX';
-					$url     = JRoute::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . (int) $item->id);
+					$url     = Route::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . (int) $item->id);
 
-					$tooltip = htmlspecialchars($item->greeting, ENT_QUOTES, 'UTF-8') . '<br />' . JText::sprintf('JCATEGORY_SPRINTF', $item->category_title);
+					$tooltip = htmlspecialchars($item->greeting, ENT_QUOTES, 'UTF-8') . '<br />' . Text::sprintf('JCATEGORY_SPRINTF', $item->category_title);
 					$classes = 'hasPopover label label-association label-' . $item->lang_sef;
 
 					$item->link = '<a href="' . $url . '" title="' . $item->language_title . '" class="' . $classes
@@ -71,9 +78,9 @@ class JHtmlHelloworlds
 				}
 			}
 
-			JHtml::_('bootstrap.popover');
+			HTMLHelper::_('bootstrap.popover');
 
-			$html = JLayoutHelper::render('joomla.content.associations', $items);
+			$html = LayoutHelper::render('joomla.content.associations', $items);
 		}
 
 		return $html;

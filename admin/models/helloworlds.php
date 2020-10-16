@@ -9,6 +9,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
+
 /**
  * HelloWorldList Model
  *
@@ -47,7 +50,7 @@ class HelloWorldModelHelloWorlds extends JModelList
 
         protected function populateState($ordering = 'lft', $direction = 'asc')
         {
-                $app = JFactory::getApplication();
+                $app = Factory::getApplication();
 
                 // Adjust the context to support modal layouts.
                 if ($layout = $app->input->get('layout'))
@@ -79,9 +82,9 @@ class HelloWorldModelHelloWorlds extends JModelList
         protected function getListQuery()
         {
                 // Initialize variables.
-                $db    = JFactory::getDbo();
+                $db    = Factory::getDbo();
                 $query = $db->getQuery(true);
-                $user = JFactory::getUser();
+                $user = Factory::getUser();
 
                 // Create the base select statement.
                 $query->select('a.id as id, a.greeting as greeting, a.published as published, a.created as created, a.access as access,
@@ -109,7 +112,7 @@ class HelloWorldModelHelloWorlds extends JModelList
                         ->join('LEFT', $db->quoteName('#__languages', 'l') . ' ON l.lang_code = a.language');
 
                 // Join over the associations - we just want to know if there are any, at this stage
-                if (JLanguageAssociations::isEnabled())
+                if (Associations::isEnabled())
                 {
                         $query->select('COUNT(asso2.id)>1 as association')
                                 ->join('LEFT', '#__associations AS asso ON asso.id = a.id AND asso.context=' . $db->quote('com_helloworld.item'))

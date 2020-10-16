@@ -5,7 +5,10 @@
 
 defined('JPATH_BASE') or die;
 
-JFormHelper::loadFieldClass('list');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\FormHelper;
+
+FormHelper::loadFieldClass('list');
 
 class JFormFieldHelloworldParent extends JFormFieldList
 {
@@ -19,7 +22,7 @@ class JFormFieldHelloworldParent extends JFormFieldList
 	{
 		$options = array();
 
-		$db = JFactory::getDbo();
+		$db = Factory::getDbo();
 		$query = $db->getQuery(true)
 			->select('DISTINCT(a.id) AS value, a.greeting AS text, a.level, a.lft')
 			->from('#__helloworld AS a');

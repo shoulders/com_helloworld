@@ -9,6 +9,10 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Filter\OutputFilter;
+use Joomla\CMS\Table\Observer\Tags;
+use Joomla\CMS\Table\Table;
+
 /**
  * Hello Table class
  *
@@ -25,7 +29,7 @@ class HelloWorldTableHelloWorld extends JTableNested
 	{
 		JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', 'HelloWorldTableHelloWorld', array('typeAlias' => 'com_helloworld.helloworld'));
 		parent::__construct('#__helloworld', 'id', $db);
-		JTableObserverTags::createObserver($this, array('typeAlias' => 'com_helloworld.helloworld'));
+		Tags::createObserver($this, array('typeAlias' => 'com_helloworld.helloworld'));
 	}
 	/**
 	 * Overloaded bind function
@@ -134,7 +138,7 @@ class HelloWorldTableHelloWorld extends JTableNested
 	protected function _getAssetParentId(JTable $table = NULL, $id = NULL)
 	{
 		// We will retrieve the parent-asset from the Asset-table
-		$assetParent = JTable::getInstance('Asset');
+		$assetParent = Table::getInstance('Asset');
 		// Default: if no asset-parent can be found we take the global asset
 		$assetParentId = $assetParent->getRootId();
 
@@ -165,7 +169,7 @@ class HelloWorldTableHelloWorld extends JTableNested
 		{
 			$this->alias = $this->greeting;
 		}
-		$this->alias = JFilterOutput::stringURLSafe($this->alias);
+		$this->alias = OutputFilter::stringURLSafe($this->alias);
 		return true;
 	}
 

@@ -10,6 +10,11 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Table\Table;
+
 JLoader::register('HelloworldHelperRoute', JPATH_ROOT . '/components/com_helloworld/helpers/route.php');
 
 /**
@@ -39,12 +44,12 @@ class HelloWorldModelHelloWorld extends JModelItem
 	protected function populateState()
 	{
 		// Get the message id
-		$jinput = JFactory::getApplication()->input;
+		$jinput = Factory::getApplication()->input;
 		$id     = $jinput->get('id', 1, 'INT');
 		$this->setState('message.id', $id);
 
 		// Load the parameters.
-		$this->setState('params', JFactory::getApplication()->getParams());
+		$this->setState('params', Factory::getApplication()->getParams());
 		parent::populateState();
 	}
 
@@ -61,7 +66,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 	 */
 	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -73,7 +78,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 		if (!isset($this->item) || !is_null($id)) 
 		{
 			$id    = is_null($id) ? $this->getState('message.id') : $id;
-			$db    = JFactory::getDbo();
+			$db    = Factory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('h.greeting, h.params, h.image as image, c.title as category, c.access as catAccess, 
 						h.latitude as latitude, h.longitude as longitude, h.access as access,
@@ -82,9 +87,9 @@ class HelloWorldModelHelloWorld extends JModelItem
 				  ->leftJoin('#__categories as c ON h.catid=c.id')
 				  ->where('h.id=' . (int)$id);
 
-			if (JLanguageMultilang::isEnabled())
+			if (Multilanguage::isEnabled())
 			{
-				$lang = JFactory::getLanguage()->getTag();
+				$lang = Factory::getLanguage()->getTag();
 				$query->where('h.language IN ("*","' . $lang . '")');
 			}
 
@@ -108,7 +113,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 				$this->item->imageDetails = $image;
 
 				// Check if the user can access this record (and category)
-				$user = JFactory::getUser();
+				$user = Factory::getUser();
 				$userAccessLevels = $user->getAuthorisedViewLevels();
 				if ($user->authorise('core.admin')) // ie superuser
 				{
@@ -156,18 +161,18 @@ class HelloWorldModelHelloWorld extends JModelItem
 
 	public function getMapSearchResults($mapbounds)
 	{
-		if (JFactory::getConfig()->get('caching') >= 1)
+		if (Factory::getConfig()->get('caching') >= 1)
 		{
 			// Build a cache ID based on the conditions for the SQL where clause
-			$groups = implode(',', JFactory::getUser()->getAuthorisedViewLevels());
+			$groups = implode(',', Factory::getUser()->getAuthorisedViewLevels());
 			$cacheId = $groups . '.' . $mapbounds['minlat'] . '.' . $mapbounds['maxlat'] . '.' . 
 										$mapbounds['minlng'] . '.' . $mapbounds['maxlng'];
-			if (JLanguageMultilang::isEnabled())
+			if (Multilanguage::isEnabled())
 			{
-				$lang = JFactory::getLanguage()->getTag();
+				$lang = Factory::getLanguage()->getTag();
 				$cacheId .= $lang;
 			}
-			$cache = JFactory::getCache('com_helloworld', 'callback');
+			$cache = Factory::getCache('com_helloworld', 'callback');
 			$results = $cache->get(array($this, '_getMapSearchResults'), array($mapbounds), md5($cacheId), false);
 			return $results;
 		}
@@ -181,7 +186,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 	{
 		try 
 		{
-			$db    = JFactory::getDbo();
+			$db    = Factory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('h.id, h.alias, h.catid, h.greeting, h.latitude, h.longitude, h.access')
 			   ->from('#__helloworld as h')
@@ -190,13 +195,13 @@ class HelloWorldModelHelloWorld extends JModelItem
 				' AND h.longitude > ' . $mapbounds['minlng'] .
 				' AND h.longitude < ' . $mapbounds['maxlng']);
 
-			if (JLanguageMultilang::isEnabled())
+			if (Multilanguage::isEnabled())
 			{
-				$lang = JFactory::getLanguage()->getTag();
+				$lang = Factory::getLanguage()->getTag();
 				$query->where('h.language IN ("*","' . $lang . '")');
 			}
 
-			$user = JFactory::getUser();
+			$user = Factory::getUser();
 			$loggedIn = $user->get('guest') != 1;
 			if ($loggedIn && !$user->authorise('core.admin'))
 			{
@@ -212,11 +217,11 @@ class HelloWorldModelHelloWorld extends JModelItem
 		catch (Exception $e)
 		{
 			$msg = $e->getMessage();
-			JFactory::getApplication()->enqueueMessage($msg, 'error'); 
+			Factory::getApplication()->enqueueMessage($msg, 'error'); 
 			$results = null;
 		}
 
-		if (JLanguageMultilang::isEnabled())
+		if (Multilanguage::isEnabled())
 		{
 			$query_lang = "&lang={$lang}";
 		}
@@ -227,7 +232,7 @@ class HelloWorldModelHelloWorld extends JModelItem
 
 		for ($i = 0; $i < count($results); $i++) 
 		{
-			$results[$i]->url = JRoute::_('index.php?option=com_helloworld&view=helloworld&id=' . $results[$i]->id . 
+			$results[$i]->url = Route::_('index.php?option=com_helloworld&view=helloworld&id=' . $results[$i]->id . 
 				":" . $results[$i]->alias . '&catid=' . $results[$i]->catid . $query_lang);
 		}
 

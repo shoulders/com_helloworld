@@ -5,6 +5,11 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Categories\Categories;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Router\Route;
+
 class HelloworldModelCategory extends JModelList
 {
 	public function __construct($config = array())
@@ -26,7 +31,7 @@ class HelloworldModelCategory extends JModelList
 	{
 		parent::populateState($ordering, $direction);
         
-		$app = JFactory::getApplication('site');
+		$app = Factory::getApplication('site');
 		$catid = $app->input->getInt('id');
 
 		$this->setState('category.id', $catid);
@@ -34,7 +39,7 @@ class HelloworldModelCategory extends JModelList
     
 	protected function getListQuery()
 	{
-		$db    = JFactory::getDbo();
+		$db    = Factory::getDbo();
 		$query = $db->getQuery(true);
 
 		$catid = $this->getState('category.id'); 
@@ -42,9 +47,9 @@ class HelloworldModelCategory extends JModelList
 			->from($db->quoteName('#__helloworld'))
 			->where('catid = ' . $catid);
 
-		if (JLanguageMultilang::isEnabled())
+		if (Multilanguage::isEnabled())
 		{
-			$lang = JFactory::getLanguage()->getTag();
+			$lang = Factory::getLanguage()->getTag();
 			$query->where('language IN ("*","' . $lang . '")');
 		}
 
@@ -59,7 +64,7 @@ class HelloworldModelCategory extends JModelList
 	public function getCategoryName()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = JCategories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Helloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);   
 		return $categoryNode->title; 
 	}
@@ -67,12 +72,12 @@ class HelloworldModelCategory extends JModelList
 	public function getSubcategories()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = JCategories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Helloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);
 		$subcats = $categoryNode->getChildren(); 
         
-		$lang = JFactory::getLanguage()->getTag();
-		if (JLanguageMultilang::isEnabled() && $lang)
+		$lang = Factory::getLanguage()->getTag();
+		if (Multilanguage::isEnabled() && $lang)
 		{
 			$query_lang = "&lang={$lang}";
 		}
@@ -83,7 +88,7 @@ class HelloworldModelCategory extends JModelList
         
 		foreach ($subcats as $subcat)
 		{
-			$subcat->url = JRoute::_("index.php?view=category&id=" . $subcat->id . $query_lang);
+			$subcat->url = Route::_("index.php?view=category&id=" . $subcat->id . $query_lang);
 		}
 		return $subcats;
 	}
@@ -91,7 +96,7 @@ class HelloworldModelCategory extends JModelList
 	public function getCategoryAccess()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = JCategories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Helloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);   
 		return $categoryNode->access; 
 	}
@@ -99,7 +104,7 @@ class HelloworldModelCategory extends JModelList
 	public function getItems()
 	{
 		$items = parent::getItems();
-		$user = JFactory::getUser();
+		$user = Factory::getUser();
 		$loggedIn = $user->get('guest') != 1;
 
 		if ($user->authorise('core.admin')) // ie superuser
@@ -147,7 +152,7 @@ class HelloworldModelCategory extends JModelList
 
 	public function getCategory()
 	{
-		$categories = JCategories::getInstance('Helloworld', array());
+		$categories = Categories::getInstance('Helloworld', array());
 		$category = $categories->get($this->getState('category.id', 'root'));
 		return $category;
 	}

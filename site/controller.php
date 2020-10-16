@@ -8,6 +8,11 @@
  */
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Session\Session;
+
 /**
  * Hello World Component Controller
  *
@@ -19,7 +24,7 @@ class HelloWorldController extends JControllerLegacy
 	{
 		$viewName = $this->input->get('view', '');
 		$cachable = true;
-		if ($viewName == 'form' || JFactory::getUser()->get('id'))
+		if ($viewName == 'form' || Factory::getUser()->get('id'))
 		{
 			$cachable = false;
 		}
@@ -39,9 +44,9 @@ class HelloWorldController extends JControllerLegacy
 
 	public function mapsearch()
 	{
-//		if (!JSession::checkToken('get')) 
+//		if (!Session::checkToken('get')) 
 //		{
-//			echo new JResponseJson(null, JText::_('JINVALID_TOKEN'), true);
+//			echo new JResponseJson(null, Text::_('JINVALID_TOKEN'), true);
 //		}
 //		else 
 //		{

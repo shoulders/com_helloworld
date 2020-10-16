@@ -10,6 +10,12 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ContentHelper;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Uri\Uri;
+
 /**
  * HelloWorld View
  * This is the site view presenting the user with the ability to add a new Helloworld record
@@ -36,18 +42,18 @@ class HelloWorldViewForm extends JViewLegacy
 		$this->script = $this->get('Script'); 
 
 		// Propose current language as default
-		if (JLanguageMultilang::isEnabled())
+		if (Multilanguage::isEnabled())
 		{
-			$lang = JFactory::getLanguage()->getTag();
+			$lang = Factory::getLanguage()->getTag();
 			$this->form->setFieldAttribute('language', 'default', $lang);
 		}
 
 		// Check that the user has permissions to create a new helloworld record
-		$this->canDo = JHelperContent::getActions('com_helloworld');
+		$this->canDo = ContentHelper::getActions('com_helloworld');
 		if (!($this->canDo->get('core.create'))) 
 		{
-			$app = JFactory::getApplication(); 
-			$app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+			$app = Factory::getApplication(); 
+			$app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
 			$app->setHeader('status', 403, true);
 			return;
 		}
@@ -72,11 +78,11 @@ class HelloWorldViewForm extends JViewLegacy
 	 */
 	protected function setDocument() 
 	{
-		$document = JFactory::getDocument();
-		$document->setTitle(JText::_('COM_HELLOWORLD_HELLOWORLD_CREATING'));
-		$document->addScript(JURI::root() . $this->script);
-		$document->addScript(JURI::root() . "/administrator/components/com_helloworld"
+		$document = Factory::getDocument();
+		$document->setTitle(Text::_('COM_HELLOWORLD_HELLOWORLD_CREATING'));
+		$document->addScript(Uri::root() . $this->script);
+		$document->addScript(Uri::root() . "/administrator/components/com_helloworld"
 		                                  . "/views/helloworld/submitbutton.js");
-		JText::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
+		Text::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
 	}
 }

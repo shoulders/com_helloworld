@@ -10,6 +10,11 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Language\LanguageHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Table\Table;
 use Joomla\Registry\Registry;
 
 /**
@@ -46,7 +51,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	protected function batchPosition($value, $pks, $contexts)
 	{
 
-		$app = JFactory::getApplication();
+		$app = Factory::getApplication();
 		$app->enqueueMessage("In batchPosition");
 
 		if (isset($value['setposition']) && ($value['setposition'] === 'changePosition'))
@@ -54,7 +59,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 			if (empty($this->batchSet))
 			{
 				// Set some needed variables.
-				$this->user = JFactory::getUser();
+				$this->user = Factory::getUser();
 				$this->table = $this->getTable();
 				$this->tableClassName = get_class($this->table);
 				$this->contentType = new JUcmType;
@@ -92,7 +97,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 				}
 				else
 				{
-					$this->setError(JText::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
+					$this->setError(Text::_('JLIB_APPLICATION_ERROR_BATCH_CANNOT_EDIT'));
 
 					return false;
 				}
@@ -133,13 +138,13 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		}
         
 		// Load associated items
-		if (JLanguageAssociations::isEnabled())
+		if (Associations::isEnabled())
 		{
 			$item->associations = array();
 
 			if ($item->id != null)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', (int)$item->id);
+				$associations = Associations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', (int)$item->id);
 
 				foreach ($associations as $tag => $association)
 				{
@@ -163,7 +168,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	 */
 	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 
 	/**
@@ -204,9 +209,9 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	protected function preprocessForm(JForm $form, $data, $group = 'helloworld')
 	{
 		// Association content items
-		if (JLanguageAssociations::isEnabled())
+		if (Associations::isEnabled())
 		{
-			$languages = JLanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');
+			$languages = LanguageHelper::getContentLanguages(false, true, null, 'ordering', 'asc');
 
 			if (count($languages) > 1)
 			{
@@ -252,7 +257,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState(
+		$data = Factory::getApplication()->getUserState(
 			'com_helloworld.edit.helloworld.data',
 			array()
 		);
@@ -273,7 +278,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 	 */
 	public function save($data)
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 
 		JLoader::register('CategoriesHelper', JPATH_ADMINISTRATOR . '/components/com_categories/helpers/categories.php');
 
@@ -315,13 +320,13 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		return $result;
 	}
 	/**
-	 * Method to check if it's OK to delete a message. Overrides JModelAdmin::canDelete
+	 * Method to check if it's OK to delete a message. Overrides AdminModel::canDelete
 	 */
 	protected function canDelete($record)
 	{
 		if( !empty( $record->id ) )
 		{
-			return JFactory::getUser()->authorise( "core.delete", "com_helloworld.helloworld." . $record->id );
+			return Factory::getUser()->authorise( "core.delete", "com_helloworld.helloworld." . $record->id );
 		}
 	}
 	/**

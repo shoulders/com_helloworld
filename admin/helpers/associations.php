@@ -5,7 +5,10 @@
 
 defined('_JEXEC') or die;
 
-JTable::addIncludePath(__DIR__ . '/../tables');
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Table\Table;
+
+Table::addIncludePath(__DIR__ . '/../tables');
 
 class HelloworldAssociationsHelper extends JAssociationExtensionHelper
 {
@@ -54,7 +57,7 @@ class HelloworldAssociationsHelper extends JAssociationExtensionHelper
         }
 
 		// Get the associations.
-		$associations = JLanguageAssociations::getAssociations(
+		$associations = Associations::getAssociations(
 			$this->extension,
 			$type['tables']['a'],
 			$context,
@@ -87,11 +90,11 @@ class HelloworldAssociationsHelper extends JAssociationExtensionHelper
 		switch ($typeName)
 		{
 			case 'helloworld':
-				$table = JTable::getInstance('Helloworld', 'HelloworldTable');
+				$table = Table::getInstance('Helloworld', 'HelloworldTable');
 				break;
 
 			case 'category':
-				$table = JTable::getInstance('Category');
+				$table = Table::getInstance('Category');
 				break;
 		}
 

@@ -9,8 +9,16 @@
  
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
-$lang = JFactory::getLanguage()->getTag();
-if (JLanguageMultilang::isEnabled() && $lang)
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
+
+$lang = Factory::getLanguage()->getTag();
+if (Multilanguage::isEnabled() && $lang)
 {
     $query_lang = "&lang={$lang}";
 }
@@ -39,23 +47,23 @@ else
     } ?>
 	
 <?php if ($this->parentItem->id > 1) : ?>
-	<h1><?php echo JText::_('COM_HELLOWORLD_PARENT') ?>
+	<h1><?php echo Text::_('COM_HELLOWORLD_PARENT') ?>
 	</h1>
 	<h3>
-		<?php $url = JRoute::_('index.php?option=com_helloworld&view=helloworld&id=' . $this->parentItem->id . ':' . $this->parentItem->alias . '&catid=' . $this->parentItem->catid . $query_lang); ?>
+		<?php $url = Route::_('index.php?option=com_helloworld&view=helloworld&id=' . $this->parentItem->id . ':' . $this->parentItem->alias . '&catid=' . $this->parentItem->catid . $query_lang); ?>
 		<a href="<?php echo $url; ?>"><?php echo $this->parentItem->greeting; ?></a>
 	</h3>
 <?php endif; ?>
 
 <?php if ($this->children) : 
 		$baseLevel = $this->item->level; ?>
-		<h1><?php echo JText::_('COM_HELLOWORLD_CHILDREN') ?>
+		<h1><?php echo Text::_('COM_HELLOWORLD_CHILDREN') ?>
 		</h1>
 		<?php foreach ($this->children as $i => $child) : ?>
 			<h3>
-				<?php $prefix = JLayoutHelper::render('joomla.html.treeprefix', array('level' => $child->level - $baseLevel)); ?>
+				<?php $prefix = LayoutHelper::render('joomla.html.treeprefix', array('level' => $child->level - $baseLevel)); ?>
 				<?php echo $prefix; ?>
-				<?php $url = JRoute::_('index.php?option=com_helloworld&view=helloworld&id=' . $child->id . ':' . $child->alias . '&catid=' . $child->catid . $query_lang); ?>
+				<?php $url = Route::_('index.php?option=com_helloworld&view=helloworld&id=' . $child->id . ':' . $child->alias . '&catid=' . $child->catid . $query_lang); ?>
 				<a href="<?php echo $url; ?>"><?php echo $child->greeting; ?></a>
 			</h3>
 	<?php endforeach; ?>
@@ -84,9 +92,9 @@ else
 <div id="map" class="map"></div>
 <div class="map-callout map-callout-bottom" id="greeting-container"></div>
 <div id="searchmap">
-    <?php echo '<input id="token" type="hidden" name="' . JSession::getFormToken() . '" value="1" />'; ?>
+    <?php echo '<input id="token" type="hidden" name="' . Session::getFormToken() . '" value="1" />'; ?>
     <button type="button" class="btn btn-primary" onclick="searchHere();">
-        <?php echo JText::_('COM_HELLOWORLD_SEARCH_HERE_BUTTON') ?>
+        <?php echo Text::_('COM_HELLOWORLD_SEARCH_HERE_BUTTON') ?>
     </button>
     <div id="searchresults">
     </div>

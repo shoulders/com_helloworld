@@ -6,6 +6,9 @@
  
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
  
 class HelloWorldViewHelloWorld extends JViewLegacy
 {
@@ -18,7 +21,7 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 
 	function display($tpl = null)
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$mapbounds = $input->get('mapBounds', array(), 'ARRAY');
 		$model = $this->getModel();
 		if ($mapbounds)
@@ -30,13 +33,13 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 			}
 			else
 			{
-				echo new JResponseJson(null, JText::_('COM_HELLOWORLD_ERROR_NO_RECORDS'), true);
+				echo new JResponseJson(null, Text::_('COM_HELLOWORLD_ERROR_NO_RECORDS'), true);
 			}
 		}
 		else 
 		{
 			$records = array();
-			echo new JResponseJson(null, JText::_('COM_HELLOWORLD_ERROR_NO_MAP_BOUNDS'), true);
+			echo new JResponseJson(null, Text::_('COM_HELLOWORLD_ERROR_NO_MAP_BOUNDS'), true);
 		}
 	}
 }

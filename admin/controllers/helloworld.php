@@ -9,6 +9,10 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\FormController;
+use Joomla\CMS\Uri\Uri;
+
 /**
  * HelloWorld Controller
  *
@@ -22,7 +26,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	* Implement to allowAdd or not
 	*
 	* Not used at this time (but you can look at how other components use it....)
-	* Overwrites: JControllerForm::allowAdd
+	* Overwrites: FormController::allowAdd
 	*
 	* @param array $data
 	* @return bool
@@ -33,7 +37,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	}
 	/**
 	* Implement to allow edit or not
-	* Overwrites: JControllerForm::allowEdit
+	* Overwrites: FormController::allowEdit
 	*
 	* @param array $data
 	* @param string $key
@@ -44,14 +48,14 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		$id = isset( $data[ $key ] ) ? $data[ $key ] : 0;
 		if( !empty( $id ) )
 		{
-			return JFactory::getUser()->authorise( "core.edit", "com_helloworld.helloworld." . $id );
+			return Factory::getUser()->authorise( "core.edit", "com_helloworld.helloworld." . $id );
 		}
 	}
 
 	public function batch($model = null)
 	{
 		$model = $this->getModel('helloworld');
-		$this->setRedirect((string)JUri::getInstance());
+		$this->setRedirect((string)Uri::getInstance());
 		return parent::batch($model);
 	}
 }

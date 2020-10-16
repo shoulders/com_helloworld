@@ -10,22 +10,29 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted Access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
 use Joomla\Registry\Registry;
 
-JHtml::_('formbehavior.chosen', 'select');
+HTMLHelper::_('formbehavior.chosen', 'select');
 
 $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
-$user = JFactory::getUser();
+$user = Factory::getUser();
 $userId = $user->get('id');
 $saveOrder = ($listOrder == 'lft' && strtolower($listDirn) == 'asc');
 if ($saveOrder)
 {
         $saveOrderingUrl = 'index.php?option=com_helloworld&task=helloworlds.saveOrderAjax&tmpl=component';
         // pass true as parameter 7 to indicate that we have a nested set
-        JHtml::_('sortablelist.sortable', 'helloworldList', 'adminForm', strtolower($listDirn), $saveOrderingUrl, false, true);
+        HTMLHelper::_('sortablelist.sortable', 'helloworldList', 'adminForm', strtolower($listDirn), $saveOrderingUrl, false, true);
 }
-$assoc = JLanguageAssociations::isEnabled();
+$assoc = Associations::isEnabled();
 $authorFieldwidth = $assoc ? "10%" : "25%";
 JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_helloworld/helpers/html/helloworlds.php');
 ?>
@@ -36,9 +43,9 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
         <div id="j-main-container" class="span10">
         <div class="row-fluid">
             <div class="span12">
-                <?php echo JText::_('COM_HELLOWORLD_HELLOWORLDS_FILTER'); ?>
+                <?php echo Text::_('COM_HELLOWORLD_HELLOWORLDS_FILTER'); ?>
                 <?php
-                    echo JLayoutHelper::render(
+                    echo LayoutHelper::render(
                         'joomla.searchtools.default',
                         array('view' => $this)
                     );
@@ -49,43 +56,43 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
             <thead>
             <tr>
                 <th width="1%">
-                    <?php echo JHtml::_('searchtools.sort', '', 'lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', '', 'lft', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
                 </th>
-                <th width="1%"><?php echo JText::_('COM_HELLOWORLD_NUM'); ?></th>
+                <th width="1%"><?php echo Text::_('COM_HELLOWORLD_NUM'); ?></th>
                 <th width="1%">
-                    <?php echo JHtml::_('grid.checkall'); ?>
+                    <?php echo HTMLHelper::_('grid.checkall'); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLDS_NAME', 'greeting', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLDS_NAME', 'greeting', $listDirn, $listOrder); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JText::_('COM_HELLOWORLD_HELLOWORLDS_POSITION'); ?>
+                    <?php echo Text::_('COM_HELLOWORLD_HELLOWORLDS_POSITION'); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JText::_('COM_HELLOWORLD_HELLOWORLDS_IMAGE'); ?>
+                    <?php echo Text::_('COM_HELLOWORLD_HELLOWORLDS_IMAGE'); ?>
                 </th>
                 <th width="20%">
-                    <?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort',  'JGRID_HEADING_ACCESS', 'access', $listDirn, $listOrder); ?>
                 </th>
                 <?php if ($assoc) : ?>
                     <th width="10%">
-                        <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLDS_ASSOCIATIONS', 'association', $listDirn, $listOrder); ?>
+                        <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLDS_ASSOCIATIONS', 'association', $listDirn, $listOrder); ?>
                     </th>
                 <?php endif; ?>
                 <th width="<?php echo $authorFieldwidth; ?>">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_AUTHOR', 'author', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_AUTHOR', 'author', $listDirn, $listOrder); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_LANGUAGE', 'language', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_LANGUAGE', 'language', $listDirn, $listOrder); ?>
                 </th>
                 <th width="10%">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_CREATED_DATE', 'created', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_CREATED_DATE', 'created', $listDirn, $listOrder); ?>
                 </th>
                 <th width="5%">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_PUBLISHED', 'published', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_PUBLISHED', 'published', $listDirn, $listOrder); ?>
                 </th>
                 <th width="2%">
-                    <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_ID', 'id', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_ID', 'id', $listDirn, $listOrder); ?>
                 </th>
             </tr>
             </thead>
@@ -99,7 +106,7 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
             <tbody>
                 <?php if (!empty($this->items)) : ?>
                     <?php foreach ($this->items as $i => $row) :
-                        $link = JRoute::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . $row->id);
+                        $link = Route::_('index.php?option=com_helloworld&task=helloworld.edit&id=' . $row->id);
                         $row->image = new Registry;
                         $row->image->loadString($row->imageInfo);
                         // create a list of the parents up the hierarchy to the root 
@@ -138,7 +145,7 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
                                 }
                                 elseif (!$saveOrder)
                                 {
-                                    $iconClass = ' inactive tip-top hasTooltip" title="' . JHtml::_('tooltipText', 'JORDERINGDISABLED');
+                                    $iconClass = ' inactive tip-top hasTooltip" title="' . HTMLHelper::_('tooltipText', 'JORDERINGDISABLED');
                                 }
                                 ?>
                                 <span class="sortable-handler<?php echo $iconClass ?>">
@@ -150,23 +157,23 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
                             </td>
                             <td><?php echo $this->pagination->getRowOffset($i); ?></td>
                             <td>
-                                <?php echo JHtml::_('grid.id', $i, $row->id); ?>
+                                <?php echo HTMLHelper::_('grid.id', $i, $row->id); ?>
                             </td>
                             <td>
-                                <?php $prefix = JLayoutHelper::render('joomla.html.treeprefix', array('level' => $row->level)); ?>
+                                <?php $prefix = LayoutHelper::render('joomla.html.treeprefix', array('level' => $row->level)); ?>
                                 <?php echo $prefix; ?>
                                 <?php if ($row->checked_out) : ?>
                                     <?php $canCheckin = $user->authorise('core.manage', 'com_checkin') || $row->checked_out == $userId; ?>
-                                    <?php echo JHtml::_('jgrid.checkedout', $i, $row->editor, $row->checked_out_time, 'helloworlds.', $canCheckin); ?>
+                                    <?php echo HTMLHelper::_('jgrid.checkedout', $i, $row->editor, $row->checked_out_time, 'helloworlds.', $canCheckin); ?>
                                 <?php endif; ?>
-                                <a href="<?php echo $link; ?>" title="<?php echo JText::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
+                                <a href="<?php echo $link; ?>" title="<?php echo Text::_('COM_HELLOWORLD_EDIT_HELLOWORLD'); ?>">
                                     <?php echo $row->greeting; ?>
                                 </a>
                                 <span class="small break-word">
-                                        <?php echo JText::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($row->alias)); ?>
+                                        <?php echo Text::sprintf('JGLOBAL_LIST_ALIAS', $this->escape($row->alias)); ?>
                                 </span>
                                 <div class="small">
-                                    <?php echo JText::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
+                                    <?php echo Text::_('JCATEGORY') . ': ' . $this->escape($row->category_title); ?>
                                 </div>
                                 <div class="small">
                                     <?php echo 'Path: ' . $this->escape($row->path); ?>
@@ -178,7 +185,7 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
                             <td align="center">
                                 <?php
                                     $caption = $row->image->get('caption') ? : '' ;
-                                    $src = JURI::root() . ($row->image->get('image') ? : '' );
+                                    $src = Uri::root() . ($row->image->get('image') ? : '' );
                                     $html = '<p class="hasTooltip" style="display: inline-block" data-html="true" data-toggle="tooltip" data-placement="right" title="<img width=\'100px\' height=\'100px\' src=\'%s\'>">%s</p>';
                                     echo sprintf($html, $src, $caption);  ?>
                             </td>
@@ -188,7 +195,7 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
                             <?php if ($assoc) : ?>
                                 <td align="center">
                                     <?php if ($row->association) : ?>
-                                        <?php echo JHtml::_('helloworlds.association', $row->id); ?>
+                                        <?php echo HTMLHelper::_('helloworlds.association', $row->id); ?>
                                     <?php endif; ?>
                                 </td>
                             <?php endif; ?>
@@ -196,13 +203,13 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
                                 <?php echo $row->author; ?>
                             </td>
                             <td align="center">
-                                <?php echo JLayoutHelper::render('joomla.content.language', $row); ?>
+                                <?php echo LayoutHelper::render('joomla.content.language', $row); ?>
                             </td>
                             <td align="center">
                                 <?php echo substr($row->created, 0, 10); ?>
                             </td>
                             <td align="center">
-                                <?php echo JHtml::_('jgrid.published', $row->published, $i, 'helloworlds.', true, 'cb'); ?>
+                                <?php echo HTMLHelper::_('jgrid.published', $row->published, $i, 'helloworlds.', true, 'cb'); ?>
                             </td>
                             <td align="center">
                                 <?php echo $row->id; ?>
@@ -213,17 +220,17 @@ JLoader::register('JHtmlHelloworlds', JPATH_ADMINISTRATOR . '/components/com_hel
             </tbody>
         </table>
         <?php // load the modal for displaying the batch options
-            echo JHtml::_(
+            echo HTMLHelper::_(
             'bootstrap.renderModal',
             'collapseModal',
             array(
-                'title' => JText::_('COM_HELLOWORLD_BATCH_OPTIONS'),
+                'title' => Text::_('COM_HELLOWORLD_BATCH_OPTIONS'),
                 'footer' => $this->loadTemplate('batch_footer')
             ),
             $this->loadTemplate('batch_body')
         ); ?>
         <input type="hidden" name="task" value=""/>
         <input type="hidden" name="boxchecked" value="0"/>
-        <?php echo JHtml::_('form.token'); ?>
+        <?php echo HTMLHelper::_('form.token'); ?>
     </div>
 </form>

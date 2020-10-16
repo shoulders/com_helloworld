@@ -5,6 +5,10 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Language\Multilanguage;
+
 JLoader::register('CategoryHelperAssociation', JPATH_ADMINISTRATOR . '/components/com_categories/helpers/association.php');
 
 /**
@@ -23,7 +27,7 @@ abstract class HelloworldHelperAssociation extends CategoryHelperAssociation
 	 */
 	public static function getAssociations($id = 0, $view = null)
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$view = $view === null ? $input->get('view') : $view;
 		$id = empty($id) ? $input->getInt('id') : $id;
 
@@ -31,14 +35,14 @@ abstract class HelloworldHelperAssociation extends CategoryHelperAssociation
 		{
 			if ($id)
 			{
-				$associations = JLanguageAssociations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', $id);
+				$associations = Associations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', $id);
 
 				$return = array();
 
 				foreach ($associations as $tag => $item)
 				{
 					$link = 'index.php?option=com_helloworld&view=helloworld&id=' . $item->id . '&catid=' . $item->catid;
-					if ($item->language && $item->language !== '*' && JLanguageMultilang::isEnabled())
+					if ($item->language && $item->language !== '*' && Multilanguage::isEnabled())
 					{
 						$link .= '&lang=' . $item->language;
 					}

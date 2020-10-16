@@ -9,6 +9,16 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Component\ComponentHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Filesystem\File;
+use Joomla\CMS\Filesystem\Path;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Session\Session;
+use Joomla\CMS\Uri\Uri;
+use Joomla\CMS\User\User;
+
 /**
  * HelloWorld Controller
  *
@@ -25,7 +35,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	
 	public function __construct($config = array())
 	{
-		$input = JFactory::getApplication()->input;
+		$input = Factory::getApplication()->input;
 		$this->view_item = $input->get("view", "helloworld", "string");
 		parent::__construct($config); 
 	}
@@ -36,8 +46,8 @@ class HelloWorldControllerHelloWorld extends JControllerForm
         
 		// set up the redirect back to the same form
 		$this->setRedirect(
-			(string)JUri::getInstance(), 
-			JText::_(COM_HELLOWORLD_ADD_CANCELLED)
+			(string)Uri::getInstance(), 
+			Text::_(COM_HELLOWORLD_ADD_CANCELLED)
 		);
 	}
     
@@ -48,20 +58,20 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	public function save($key = null, $urlVar = null)
 	{
 		// Check for request forgeries.
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		Session::checkToken() or jexit(Text::_('JINVALID_TOKEN'));
         
-		$app = JFactory::getApplication(); 
+		$app = Factory::getApplication(); 
 		$input = $app->input; 
 		$model = $this->getModel('form');
                
 		// Get the current URI to set in redirects. As we're handling a POST, 
 		// this URI comes from the <form action="..."> attribute in the layout file above
-		$currentUri = (string)JUri::getInstance();
+		$currentUri = (string)Uri::getInstance();
 
 		// Check that this user is allowed to add a new record
-		if (!JFactory::getUser()->authorise( "core.create", "com_helloworld"))
+		if (!Factory::getUser()->authorise( "core.create", "com_helloworld"))
 		{
-			$app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+			$app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
 			$app->setHeader('status', 403, true);
 
 			return;
@@ -136,17 +146,17 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		{
 			if ($file['error'] > 0)
 			{
-				$app->enqueueMessage(JText::sprintf('COM_HELLOWORLD_ERROR_FILEUPLOAD', $file['error']), 'warning');
+				$app->enqueueMessage(Text::sprintf('COM_HELLOWORLD_ERROR_FILEUPLOAD', $file['error']), 'warning');
 				return false;
 			}
             
 			// make sure filename is clean
 			jimport('joomla.filesystem.file');
-			$file['name'] = JFile::makeSafe($file['name']);
+			$file['name'] = File::makeSafe($file['name']);
 			if (!isset($file['name']))
 			{
-				// No filename (after the name was cleaned by JFile::makeSafe)
-				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_BADFILENAME'), 'warning');
+				// No filename (after the name was cleaned by File::makeSafe)
+				$app->enqueueMessage(Text::_('COM_HELLOWORLD_ERROR_BADFILENAME'), 'warning');
 				return false;
 			}
             
@@ -162,21 +172,21 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 			}
             
 			// prepare the uploaded file's destination pathnames
-			$mediaparams = JComponentHelper::getParams('com_media');
-			$relativePathname = JPath::clean($mediaparams->get($path, 'images') . '/' . $file['name']);
+			$mediaparams = ComponentHelper::getParams('com_media');
+			$relativePathname = Path::clean($mediaparams->get($path, 'images') . '/' . $file['name']);
 			$absolutePathname = JPATH_ROOT . '/' . $relativePathname;
-			if (JFile::exists($absolutePathname))
+			if (File::exists($absolutePathname))
 			{
 				// A file with this name already exists
-				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_FILE_EXISTS'), 'warning');
+				$app->enqueueMessage(Text::_('COM_HELLOWORLD_ERROR_FILE_EXISTS'), 'warning');
 				return false;
 			}
             
 			// check file contents are clean, and copy it to destination pathname
-			if (!JFile::upload($file['tmp_name'], $absolutePathname))
+			if (!File::upload($file['tmp_name'], $absolutePathname))
 			{
 				// Error in upload
-				$app->enqueueMessage(JText::_('COM_HELLOWORLD_ERROR_UNABLE_TO_UPLOAD_FILE'));
+				$app->enqueueMessage(Text::_('COM_HELLOWORLD_ERROR_UNABLE_TO_UPLOAD_FILE'));
 				return false;
 			}
             
@@ -185,14 +195,14 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		}
         
 		// add the 'created by' and 'created' date fields
-		$validData['created_by'] = JFactory::getUser()->get('id', 0);
+		$validData['created_by'] = Factory::getUser()->get('id', 0);
 		$validData['created'] = date('Y-m-d h:i:s');
         
 		// Attempt to save the data.
 		if (!$model->save($validData))
 		{
 			// Handle the case where the save failed - redirect back to the edit form
-			$this->setError(JText::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
+			$this->setError(Text::sprintf('JLIB_APPLICATION_ERROR_SAVE_FAILED', $model->getError()));
 			$this->setMessage($this->getError(), 'error');
 
 			return false;
@@ -206,11 +216,11 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		// get the id of the person to notify from global config
 		$params   = $app->getParams();
 		$userid_to_email = (int) $params->get('user_to_email');
-		$user_to_email = JUser::getInstance($userid_to_email);
+		$user_to_email = User::getInstance($userid_to_email);
 		$to_address = $user_to_email->get("email");
         
 		// get the current user (if any)
-		$current_user = JFactory::getUser();
+		$current_user = Factory::getUser();
 		if ($current_user->get("id") > 0) 
 		{
 			$current_username = $current_user->get("username");
@@ -221,7 +231,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		}
         
 		// get the Mailer object, set up the email to be sent, and send it
-		$mailer = JFactory::getMailer();
+		$mailer = Factory::getMailer();
 		$mailer->addRecipient($to_address);
 		$mailer->setSubject("New helloworld message added by " . $current_username);
 		$mailer->setBody("New greeting is " . $validData['greeting']);
@@ -231,12 +241,12 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 		}
 		catch (Exception $e)
 		{
-			JLog::add('Caught exception: ' . $e->getMessage(), JLog::Error, 'jerror');
+			Log::add('Caught exception: ' . $e->getMessage(), Log::Error, 'jerror');
 		}
         
 		$this->setRedirect(
 				$currentUri,
-				JText::_('COM_HELLOWORLD_ADD_SUCCESSFUL')
+				Text::_('COM_HELLOWORLD_ADD_SUCCESSFUL')
 				);
             
 		return true;
@@ -247,7 +257,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
 	{
 		if (empty($name))
 		{
-			$input = JFactory::getApplication()->input;
+			$input = Factory::getApplication()->input;
 			$modelname = $input->get("modelname", "helloworld", "string");
 			return parent::getModel($modelname, $prefix, $config);
 		}

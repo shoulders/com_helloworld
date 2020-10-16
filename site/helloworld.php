@@ -10,11 +10,14 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Controller\BaseController;
+
 // Get an instance of the controller prefixed by HelloWorld
-$controller = JControllerLegacy::getInstance('HelloWorld');
+$controller = BaseController::getInstance('HelloWorld');
 
 // Perform the Request task
-$input = JFactory::getApplication()->input;
+$input = Factory::getApplication()->input;
 $controller->execute($input->getCmd('task'));
 
 // Redirect if set by the controller

@@ -5,12 +5,19 @@
 
 defined('_JEXEC') or die;
 
-JHtml::_('formbehavior.chosen', 'select');
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+
+HTMLHelper::_('formbehavior.chosen', 'select');
 
 $listOrder     = $this->escape($this->state->get('list.ordering'));
 $listDirn      = $this->escape($this->state->get('list.direction'));
-$lang = JFactory::getLanguage()->getTag();
-if (JLanguageMultilang::isEnabled() && $lang)
+$lang = Factory::getLanguage()->getTag();
+if (Multilanguage::isEnabled() && $lang)
 {
     $query_lang = "&lang={$lang}";
 }
@@ -25,7 +32,7 @@ else
     <div class="row-fluid">
         <div class="span10">
             <?php
-                echo JLayoutHelper::render(
+                echo LayoutHelper::render(
                     'joomla.searchtools.default',
                     array('view' => $this, 'searchButton' => false)
                 );
@@ -35,18 +42,18 @@ else
 <table class="table table-striped table-hover">
     <thead>
     <tr>
-        <th width="5%"><?php echo JText::_('JGLOBAL_NUM'); ?></th>
+        <th width="5%"><?php echo Text::_('JGLOBAL_NUM'); ?></th>
         <th width="20%">
-            <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_GREETING_LABEL', 'greeting', $listDirn, $listOrder); ?>
+            <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_GREETING_LABEL', 'greeting', $listDirn, $listOrder); ?>
         </th>
         <th width="20%">
-            <?php echo JHtml::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_ALIAS_LABEL', 'alias', $listDirn, $listOrder); ?>
+            <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_ALIAS_LABEL', 'alias', $listDirn, $listOrder); ?>
         </th>
         <th width="20%">
-            <?php echo JText::_('COM_HELLOWORLD_HELLOWORLD_FIELD_URL_LABEL'); ?>
+            <?php echo Text::_('COM_HELLOWORLD_HELLOWORLD_FIELD_URL_LABEL'); ?>
         </th>
         <th width="5%">
-            <?php echo JHtml::_('searchtools.sort', 'JGLOBAL_FIELD_ID_LABEL', 'id', $listDirn, $listOrder); ?>
+            <?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_FIELD_ID_LABEL', 'id', $listDirn, $listOrder); ?>
         </th>
     </tr>
     </thead>
@@ -62,10 +69,10 @@ else
             <?php foreach ($this->items as $i => $row) : 
                 if (isset($row->canAccess) && !$row->canAccess) : ?>
                     <tr>
-                        <td align="center" colspan="5"><?php echo $row->greeting . " - " . JText::_('COM_HELLOWORLD_MUST_LOGIN'); ?></td>
+                        <td align="center" colspan="5"><?php echo $row->greeting . " - " . Text::_('COM_HELLOWORLD_MUST_LOGIN'); ?></td>
                     </tr>
                 <?php else :
-                    $url = JRoute::_('index.php?option=com_helloworld&view=helloworld&id=' . $row->id . ':' . $row->alias . '&catid=' . $row->catid . $query_lang);
+                    $url = Route::_('index.php?option=com_helloworld&view=helloworld&id=' . $row->id . ':' . $row->alias . '&catid=' . $row->catid . $query_lang);
                     ?>
                     <tr>
                         <td align="center"><?php echo $this->pagination->getRowOffset($i); ?></td>
@@ -79,7 +86,7 @@ else
         <?php endif; ?>
     </tbody>
 </table>
-<h1><?php echo JText::_('COM_HELLOWORLD_HEADER_SUBCATEGORIES'); ?></h1>
+<h1><?php echo Text::_('COM_HELLOWORLD_HEADER_SUBCATEGORIES'); ?></h1>
 <?php foreach ($this->subcategories as $subcategory) : ?>
     <h3><a href="<?php echo $subcategory->url; ?>"> <?php echo $subcategory->title; ?> </a></h3>
     <p><?php echo $subcategory->description; ?></p>

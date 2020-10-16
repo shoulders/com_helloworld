@@ -5,6 +5,8 @@
  
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+
 class HelloworldViewCategory extends JViewCategory
 {
 	public function display($tpl = null)
@@ -19,7 +21,7 @@ class HelloworldViewCategory extends JViewCategory
 
 		$this->subcategories = $this->get('Subcategories');
 
-		$this->params = JFactory::getApplication()->getParams();
+		$this->params = Factory::getApplication()->getParams();
 
 		parent::display($tpl);
 	}

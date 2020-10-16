@@ -10,6 +10,9 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Table\Table;
+
 /**
  * HelloWorld Model
  *
@@ -31,7 +34,7 @@ class HelloWorldModelForm extends JModelAdmin
 	 */
 	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
 	{
-		return JTable::getInstance($type, $prefix, $config);
+		return Table::getInstance($type, $prefix, $config);
 	}
 
     /**
@@ -78,7 +81,7 @@ class HelloWorldModelForm extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState(
+		$data = Factory::getApplication()->getUserState(
 			'com_helloworld.edit.helloworld.data',
 			array()
 		);

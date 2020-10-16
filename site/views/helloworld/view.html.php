@@ -9,6 +9,14 @@
  
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Log\Log;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\CMS\Router\Route;
+use Joomla\CMS\Uri\Uri;
  
 /**
  * HTML View class for the HelloWorld Component
@@ -28,12 +36,12 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 	{
 		// Assign data to the view
         $this->item = $this->get('Item');
-		$user = JFactory::getUser();
-		$app = JFactory::getApplication();
+		$user = Factory::getUser();
+		$app = Factory::getApplication();
 		
 		// for custom fields
 		$dispatcher = JEventDispatcher::getInstance();
-		JPluginHelper::importPlugin('content');
+		PluginHelper::importPlugin('content');
 		$item = $this->item;
 		$item->text = null;
 
@@ -51,7 +59,7 @@ class HelloWorldViewHelloWorld extends JViewLegacy
         // Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
+			Log::add(implode('<br />', $errors), Log::WARNING, 'jerror');
 
 			return false;
 		}
@@ -62,15 +70,15 @@ class HelloWorldViewHelloWorld extends JViewLegacy
 		{
 			if ($loggedIn)
 			{
-				$app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'), 'error');
+				$app->enqueueMessage(Text::_('JERROR_ALERTNOAUTHOR'), 'error');
 				$app->setHeader('status', 403, true);
 				return;
 			}
 			else
 			{
-				$return = base64_encode(JUri::getInstance());
-				$login_url_with_return = JRoute::_('index.php?option=com_users&return=' . $return, false);
-				$app->enqueueMessage(JText::_('COM_HELLOWORLD_MUST_LOGIN'), 'notice');
+				$return = base64_encode(Uri::getInstance());
+				$login_url_with_return = Route::_('index.php?option=com_users&return=' . $return, false);
+				$app->enqueueMessage(Text::_('COM_HELLOWORLD_MUST_LOGIN'), 'notice');
 				$app->redirect($login_url_with_return, 403);
 			}
 		}
@@ -92,18 +100,18 @@ class HelloWorldViewHelloWorld extends JViewLegacy
     
 	function addMap() 
 	{
-		$document = JFactory::getDocument();
+		$document = Factory::getDocument();
 
 		// everything's dependent upon JQuery
-		JHtml::_('jquery.framework');
+		HTMLHelper::_('jquery.framework');
 
 		// we need the Openlayers JS and CSS libraries
 		$document->addScript("https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.js");
 		$document->addStyleSheet("https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.4/ol.css");
 
 		// ... and our own JS and CSS
-		$document->addScript(JURI::root() . "media/com_helloworld/js/openstreetmap.js");
-		$document->addStyleSheet(JURI::root() . "media/com_helloworld/css/openstreetmap.css");
+		$document->addScript(Uri::root() . "media/com_helloworld/js/openstreetmap.js");
+		$document->addStyleSheet(Uri::root() . "media/com_helloworld/css/openstreetmap.css");
 
 		// get the data to pass to our JS code
 		$params = $this->get("mapParams");

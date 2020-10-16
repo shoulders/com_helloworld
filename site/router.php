@@ -2,6 +2,11 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Categories\Categories;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Associations;
+use Joomla\CMS\Language\Multilanguage;
+
 class HelloworldRouter implements JComponentRouterInterface
 {
 
@@ -9,13 +14,13 @@ class HelloworldRouter implements JComponentRouterInterface
 	{
 		$segments = array();
 
-		if (!JLanguageMultilang::isEnabled() || !isset($query['view']))
+		if (!Multilanguage::isEnabled() || !isset($query['view']))
 		{
 			return $segments;
 		}
 
-		$lang = JFactory::getLanguage()->getTag();
-		$app  = JFactory::getApplication();
+		$lang = Factory::getLanguage()->getTag();
+		$app  = Factory::getApplication();
         
 		// get the menu item that this call to build() relates to
 		if (!isset($query['Itemid']))
@@ -79,7 +84,7 @@ class HelloworldRouter implements JComponentRouterInterface
      
 	private function getCategorySegments($catid)
 	{
-		$categories = JCategories::getInstance('Helloworld', array());
+		$categories = Categories::getInstance('Helloworld', array());
 		$categoryNode = $categories->get($catid);
 		if ($categoryNode)
 		{
@@ -98,7 +103,7 @@ class HelloworldRouter implements JComponentRouterInterface
 		$vars = array();
 		$nSegments = count($segments);
         
-		$app  = JFactory::getApplication();
+		$app  = Factory::getApplication();
 		$sitemenu = $app->getMenu();
 		$activeMenuitem = $sitemenu->getActive();
         
@@ -114,7 +119,7 @@ class HelloworldRouter implements JComponentRouterInterface
 		else
 		{
 			// Try to match the categories in the segments, starting at the root
-			$categories = JCategories::getInstance('Helloworld', array());
+			$categories = Categories::getInstance('Helloworld', array());
 			$matchingCategory = $categories->get('root');
             
 			// Go through the category tree, try to get a match between each segment
@@ -171,9 +176,9 @@ class HelloworldRouter implements JComponentRouterInterface
 	public function preprocess($query)
 	{
 		static $currentLang = null;
-		if (JLanguageAssociations::isEnabled())
+		if (Associations::isEnabled())
 		{
-			$app  = JFactory::getApplication();
+			$app  = Factory::getApplication();
 			$sitemenu = $app->getMenu();
 			$lang = $query['lang'];
 
@@ -208,7 +213,7 @@ class HelloworldRouter implements JComponentRouterInterface
 			}
             
 			// if not, try to find an associated menuitem with the correct language
-			$associations = JLanguageAssociations::getAssociations('com_menus', '#__menu', 'com_menus.item', $itemid, 'id', '', '');
+			$associations = Associations::getAssociations('com_menus', '#__menu', 'com_menus.item', $itemid, 'id', '', '');
 			if (isset($associations[$lang]))
 			{
 				$query['Itemid'] = (int) $associations[$lang]->id;

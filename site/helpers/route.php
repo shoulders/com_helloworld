@@ -2,6 +2,10 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\Router\Route;
+
 /**
  * Helloworld Component Helper file for generating the URL Routes
  *
@@ -15,13 +19,13 @@ class HelloworldHelperRoute
 	 */
 	public static function getAjaxURL()
 	{
-		if (!JLanguageMultilang::isEnabled())
+		if (!Multilanguage::isEnabled())
 		{
 			return null;
 		}
         
-		$lang = JFactory::getLanguage()->getTag();
-		$app  = JFactory::getApplication();
+		$lang = Factory::getLanguage()->getTag();
+		$app  = Factory::getApplication();
 		$sitemenu= $app->getMenu();
 		$thismenuitem = $sitemenu->getActive();
 
@@ -37,7 +41,7 @@ class HelloworldHelperRoute
 		if ($menuitem)
 		{
 			$itemid = $menuitem[0]->id; 
-			$url = JRoute::_("index.php?Itemid=$itemid&view=helloworld&format=json");
+			$url = Route::_("index.php?Itemid=$itemid&view=helloworld&format=json");
 			return $url;
 		}
 		else
@@ -60,7 +64,7 @@ class HelloworldHelperRoute
 			$link .= '&catid=' . $catid;
 		}
 
-		if ($language && $language !== '*' && JLanguageMultilang::isEnabled())
+		if ($language && $language !== '*' && Multilanguage::isEnabled())
 		{
 			$link .= '&lang=' . $language;
 		}
@@ -91,7 +95,7 @@ class HelloworldHelperRoute
 		{
 			$link = 'index.php?option=com_helloworld&view=category&id=' . $id;
 
-			if ($language && $language !== '*' && JLanguageMultilang::isEnabled())
+			if ($language && $language !== '*' && Multilanguage::isEnabled())
 			{
 				$link .= '&lang=' . $language;
 			}
