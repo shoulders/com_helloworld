@@ -5,12 +5,13 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Association\AssociationExtensionHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Table\Table;
 
 Table::addIncludePath(__DIR__ . '/../tables');
 
-class HelloworldAssociationsHelper extends JAssociationExtensionHelper
+class HelloworldAssociationsHelper extends AssociationExtensionHelper
 {
 	/**
 	 * The extension name

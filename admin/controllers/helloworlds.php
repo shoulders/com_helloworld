@@ -9,12 +9,14 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\MVC\Controller\AdminController;
+
 /**
  * HelloWorlds Controller
  *
  * @since  0.0.1
  */
-class HelloWorldControllerHelloWorlds extends JControllerAdmin
+class HelloWorldControllerHelloWorlds extends AdminController
 {
 	/**
 	 * Proxy for getModel.

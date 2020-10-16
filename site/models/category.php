@@ -8,9 +8,10 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Categories\Categories;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Router\Route;
 
-class HelloworldModelCategory extends JModelList
+class HelloworldModelCategory extends ListModel
 {
 	public function __construct($config = array())
 	{

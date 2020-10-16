@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Access\Rules;
 use Joomla\CMS\Filter\OutputFilter;
+use Joomla\CMS\Table\Nested;
 use Joomla\CMS\Table\Observer\Tags;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Table\Table;
@@ -20,7 +21,7 @@ use Joomla\CMS\Table\Table;
  *
  * @since  0.0.1
  */
-class HelloWorldTableHelloWorld extends JTableNested
+class HelloWorldTableHelloWorld extends Nested
 {
 	/**
 	 * Constructor

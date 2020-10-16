@@ -3,11 +3,12 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Categories\Categories;
+use Joomla\CMS\Component\Router\RouterInterface;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Multilanguage;
 
-class HelloworldRouter implements JComponentRouterInterface
+class HelloworldRouter implements RouterInterface
 {
 
 	public function build(&$query)

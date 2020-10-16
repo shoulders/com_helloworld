@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\LanguageHelper;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 use Joomla\Registry\Registry;
 
@@ -21,9 +22,9 @@ use Joomla\Registry\Registry;
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorld extends JModelAdmin
+class HelloWorldModelHelloWorld extends AdminModel
 {
-	// JModelAdmin needs to know this for storing the associations 
+	// AdminModel needs to know this for storing the associations 
 	protected $associationsContext = 'com_helloworld.item';
 
 	/**
@@ -173,7 +174,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		return $data;
 	}
 	/**
-	 * Method to override the JModelAdmin save() function to handle Save as Copy correctly
+	 * Method to override the AdminModel save() function to handle Save as Copy correctly
 	 *
 	 * @param   The helloworld record data submitted from the form.
 	 *

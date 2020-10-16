@@ -15,6 +15,7 @@ use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Log\Log;
+use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
@@ -24,7 +25,7 @@ use Joomla\CMS\Uri\Uri;
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorld extends JViewLegacy
+class HelloWorldViewHelloWorld extends HtmlView
 {
 	/**
 	 * Display the Hello World view

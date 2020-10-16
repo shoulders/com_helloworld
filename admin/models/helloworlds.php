@@ -11,13 +11,14 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
+use Joomla\CMS\MVC\Model\ListModel;
 
 /**
  * HelloWorldList Model
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorlds extends JModelList
+class HelloWorldModelHelloWorlds extends ListModel
 {
         /**
          * Constructor.

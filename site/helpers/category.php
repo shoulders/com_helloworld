@@ -5,7 +5,9 @@
 
 defined('_JEXEC') or die;
 
-class HelloworldCategories extends JCategories
+use Joomla\CMS\Categories\Categories;
+
+class HelloworldCategories extends Categories
 {
 
 	public function __construct($options = array())

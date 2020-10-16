@@ -3,6 +3,7 @@
 defined('JPATH_BASE') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\Form\FormField;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Session\Session;
@@ -11,7 +12,7 @@ use Joomla\CMS\Session\Session;
  * Supports a modal for selecting a helloworld record
  *
  */
-class JFormFieldModal_Helloworld extends JFormField
+class FormFieldModal_Helloworld extends FormField
 {
 	/**
 	 * Method to get the html for the input field.

@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
 use Joomla\CMS\Uri\Uri;
 
@@ -21,7 +22,7 @@ use Joomla\CMS\Uri\Uri;
  *
  * @since  0.0.1
  */
-class HelloWorldViewHelloWorld extends JViewLegacy
+class HelloWorldViewHelloWorld extends HtmlView
 {
 	/**
 	 * View form

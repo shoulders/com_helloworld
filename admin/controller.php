@@ -10,6 +10,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+use Joomla\CMS\MVC\Controller\BaseController;
+
 /**
  * General Controller of HelloWorld component
  *
@@ -17,7 +19,7 @@ defined('_JEXEC') or die('Restricted access');
  * @subpackage  com_helloworld
  * @since       0.0.7
  */
-class HelloWorldController extends JControllerLegacy
+class HelloWorldController extends BaseController
 {
 	/**
 	 * The default view for the display method.

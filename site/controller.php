@@ -11,6 +11,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\BaseController;
 use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Session\Session;
 
@@ -19,7 +20,7 @@ use Joomla\CMS\Session\Session;
  *
  * @since  0.0.1
  */
-class HelloWorldController extends JControllerLegacy
+class HelloWorldController extends BaseController
 {
 	public function display($cachable = false, $urlparams = array())
 	{

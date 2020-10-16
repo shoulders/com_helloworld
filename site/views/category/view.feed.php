@@ -5,9 +5,10 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\MVC\View\CategoryFeedView;
 use Joomla\Registry\Registry;
 
-class HelloworldViewCategory extends JViewCategoryfeed
+class HelloworldViewCategory extends CategoryFeedView
 {
 	// required so that the parent class can find the helloworld content-type record containing the field mapping details
 	protected $viewName = 'helloworld';

@@ -9,11 +9,13 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
+
+use Joomla\CMS\Form\FormRule;
  
 /**
  * Form Rule class for the Joomla Framework.
  */
-class JFormRuleGreeting extends JFormRule
+class JFormRuleGreeting extends FormRule
 {
 	/**
 	 * The regular expression.

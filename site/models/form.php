@@ -11,6 +11,7 @@
 defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 
 /**
@@ -18,7 +19,7 @@ use Joomla\CMS\Table\Table;
  *
  * @since  0.0.1
  */
-class HelloWorldModelForm extends JModelAdmin
+class HelloWorldModelForm extends AdminModel
 {
 
 	/**

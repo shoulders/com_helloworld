@@ -6,8 +6,9 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
+use Joomla\CMS\MVC\View\CategoryView;
 
-class HelloworldViewCategory extends JViewCategory
+class HelloworldViewCategory extends CategoryView
 {
 	public function display($tpl = null)
 	{

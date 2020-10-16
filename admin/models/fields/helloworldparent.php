@@ -10,7 +10,7 @@ use Joomla\CMS\Form\FormHelper;
 
 FormHelper::loadFieldClass('list');
 
-class JFormFieldHelloworldParent extends JFormFieldList
+class FormFieldHelloWorldParent extends JFormFieldList
 {
 	protected $type = 'HelloworldParent';
 

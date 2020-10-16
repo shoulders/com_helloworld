@@ -15,7 +15,7 @@ JLoader::register('CategoryHelperAssociation', JPATH_ADMINISTRATOR . '/component
  * Helloworld Component Association Helper
  *
  */
-abstract class HelloworldHelperAssociation extends CategoryHelperAssociation
+abstract class HelloWorldHelperAssociation extends CategoryHelperAssociation
 {
 	/**
 	 * Method to get the associations for a given item

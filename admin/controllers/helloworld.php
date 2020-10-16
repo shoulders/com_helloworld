@@ -20,7 +20,7 @@ use Joomla\CMS\Uri\Uri;
  * @subpackage  com_helloworld
  * @since       0.0.9
  */
-class HelloWorldControllerHelloWorld extends JControllerForm
+class HelloWorldControllerHelloWorld extends FormController
 {
 	/**
 	* Implement to allowAdd or not

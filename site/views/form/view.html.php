@@ -14,6 +14,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Uri\Uri;
 
 /**
@@ -21,7 +22,7 @@ use Joomla\CMS\Uri\Uri;
  * This is the site view presenting the user with the ability to add a new Helloworld record
  * 
  */
-class HelloWorldViewForm extends JViewLegacy
+class HelloWorldViewForm extends HtmlView
 {
 
 	protected $form = null;

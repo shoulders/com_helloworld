@@ -11,7 +11,7 @@ use Joomla\CMS\Language\Text;
 
 FormHelper::loadFieldClass('list');
 
-class JFormFieldHelloworldOrdering extends JFormFieldList
+class FormFieldHelloWorldOrdering extends JFormFieldList
 {
 	protected $type = 'HelloworldOrdering';
 

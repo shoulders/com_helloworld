@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Access\Access;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Helper\ContentHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Object\CMSObject;
 
@@ -25,7 +26,7 @@ use Joomla\CMS\Object\CMSObject;
  *
  * @since   1.6
  */
-abstract class HelloWorldHelper extends JHelperContent
+abstract class HelloWorldHelper extends ContentHelper
 {
 	/**
 	 * Configure the Linkbar.

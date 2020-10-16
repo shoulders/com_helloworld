@@ -12,6 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Multilanguage;
+use Joomla\CMS\MVC\Model\ItemModel;
 use Joomla\Registry\Registry;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Table\Table;
@@ -23,7 +24,7 @@ JLoader::register('HelloworldHelperRoute', JPATH_ROOT . '/components/com_hellowo
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorld extends JModelItem
+class HelloWorldModelHelloWorld extends ItemModel
 {
 	/**
 	 * @var object item

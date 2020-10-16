@@ -15,6 +15,7 @@ use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Path;
 use Joomla\CMS\Helper\MediaHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Controller\FormController;
 use Joomla\CMS\Log\Log;
 use Joomla\CMS\Session\Session;
 use Joomla\CMS\Uri\Uri;
@@ -30,9 +31,9 @@ use Joomla\CMS\User\User;
  * users to enter a new helloworld message
  *
  */
-class HelloWorldControllerHelloWorld extends JControllerForm
+class HelloWorldControllerHelloWorld extends FormController
 {   
-	protected $view_item;  // default view within JControllerForm for reload function
+	protected $view_item;  // default view within FormController' for reload function
 	
 	public function __construct($config = array())
 	{
@@ -54,7 +55,7 @@ class HelloWorldControllerHelloWorld extends JControllerForm
     
 	/*
 	* Function handing the save for adding a new helloworld record
-	* Based on the save() function in the JControllerForm class
+	* Based on the save() function in the FormController' class
 	*/
 	public function save($key = null, $urlVar = null)
 	{

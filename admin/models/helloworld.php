@@ -15,6 +15,7 @@ use Joomla\CMS\Helper\TagsHelper;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\Language\Text;
+use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 use Joomla\CMS\UCM\UCMType;
 use Joomla\Registry\Registry;
@@ -24,9 +25,9 @@ use Joomla\Registry\Registry;
  *
  * @since  0.0.1
  */
-class HelloWorldModelHelloWorld extends JModelAdmin
+class HelloWorldModelHelloWorld extends AdminModel
 {
-    // JModelAdmin needs to know this for storing the associations 
+    // AdminModel needs to know this for storing the associations 
 	protected $associationsContext = 'com_helloworld.item';
     
 	// Contenthistory needs to know this for restoring previous versions
@@ -38,7 +39,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		);
 
 	/**
-	 * Method overriding batch in JModelAdmin so that we can include the additional batch processes
+	 * Method overriding batch in AdminModel so that we can include the additional batch processes
 	 * which the helloworld component supports.
 	 */
 	public function batch($commands, $pks, $contexts)
@@ -272,7 +273,7 @@ class HelloWorldModelHelloWorld extends JModelAdmin
 		return $data;
 	}
 	/**
-	 * Method to override the JModelAdmin save() function to handle Save as Copy correctly
+	 * Method to override the AdminModel save() function to handle Save as Copy correctly
 	 *
 	 * @param   The helloworld record data submitted from the form.
 	 *
