@@ -153,7 +153,6 @@ class HelloWorldControllerHelloWorld extends FormController
 			}
             
 			// make sure filename is clean
-			jimport('joomla.filesystem.file');
 			$file['name'] = File::makeSafe($file['name']);
 			if (!isset($file['name']))
 			{
