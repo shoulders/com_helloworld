@@ -5,7 +5,7 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\Language\Text;
 
 /**
- * Script file of HelloWorld component.
+ * Script file of QWHelloWorld component.
  *
  * The name of this class is dependent on the component being installed.
  * The class name should have the component's name, directly followed by
