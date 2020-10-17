@@ -1,19 +1,19 @@
 <?php
 /**
- * Class definition for HelloworldCategories
+ * Class definition for QwhelloworldCategories
  */
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Categories\Categories;
 
-class HelloworldCategories extends Categories
+class QwhelloworldCategories extends Categories
 {
 
 	public function __construct($options = array())
 	{
-		$options['table'] = '#__helloworld';
-		$options['extension'] = 'com_helloworld';
+		$options['table'] = '#__com_qwhelloworld';
+		$options['extension'] = 'com_qwhelloworld';
 
 		parent::__construct($options);
 	}

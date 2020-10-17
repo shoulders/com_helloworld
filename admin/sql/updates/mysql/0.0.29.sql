@@ -1,11 +1,11 @@
-ALTER TABLE `#__helloworld` ADD COLUMN `access` tinyint(4) NOT NULL DEFAULT '0' AFTER `published`;
-UPDATE `#__helloworld` SET `access` = 1; 
+ALTER TABLE `#__com_qwhelloworld` ADD COLUMN `access` tinyint(4) NOT NULL DEFAULT '0' AFTER `published`;
+UPDATE `#__com_qwhelloworld` SET `access` = 1; 
 
 UPDATE `#__content_types` SET
 `field_mappings` = 
 '{"common": {
 	"core_content_item_id": "id",
-	"core_title": "greeting",
+	"core_title": "title",
 	"core_state": "published",
 	"core_alias": "alias",
 	"core_language":"language", 
@@ -14,4 +14,4 @@ UPDATE `#__content_types` SET
 	"core_access": "access",
 	"core_catid": "catid"
   }}'
-WHERE `type_alias` = 'com_helloworld.helloworld';
+WHERE `type_alias` = 'com_qwhelloworld.project';

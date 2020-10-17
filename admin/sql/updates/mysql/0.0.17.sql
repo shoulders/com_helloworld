@@ -1,1 +1,1 @@
-ALTER TABLE `#__helloworld` ADD `image` VARCHAR(1024) NOT NULL DEFAULT '';
+ALTER TABLE `#__com_qwhelloworld` ADD `image` VARCHAR(1024) NOT NULL DEFAULT '';

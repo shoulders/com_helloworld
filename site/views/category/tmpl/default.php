@@ -1,6 +1,6 @@
 <?php
 /**
- * Layout file for displaying helloworld messages belonging to a given category
+ * Layout file for displaying project messages belonging to a given category
  */
 
 defined('_JEXEC') or die;
@@ -44,13 +44,13 @@ else
     <tr>
         <th width="5%"><?php echo Text::_('JGLOBAL_NUM'); ?></th>
         <th width="20%">
-            <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_GREETING_LABEL', 'greeting', $listDirn, $listOrder); ?>
+            <?php echo HTMLHelper::_('searchtools.sort', 'COM_QWHELLOWORLD_PROJECT_TITLE_LABEL', 'title', $listDirn, $listOrder); ?>
         </th>
         <th width="20%">
-            <?php echo HTMLHelper::_('searchtools.sort', 'COM_HELLOWORLD_HELLOWORLD_ALIAS_LABEL', 'alias', $listDirn, $listOrder); ?>
+            <?php echo HTMLHelper::_('searchtools.sort', 'COM_QWHELLOWORLD_PROJECT_ALIAS_LABEL', 'alias', $listDirn, $listOrder); ?>
         </th>
         <th width="20%">
-            <?php echo Text::_('COM_HELLOWORLD_HELLOWORLD_FIELD_URL_LABEL'); ?>
+            <?php echo Text::_('COM_QWHELLOWORLD_PROJECT_FIELD_URL_LABEL'); ?>
         </th>
         <th width="5%">
             <?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_FIELD_ID_LABEL', 'id', $listDirn, $listOrder); ?>
@@ -69,14 +69,14 @@ else
             <?php foreach ($this->items as $i => $row) : 
                 if (isset($row->canAccess) && !$row->canAccess) : ?>
                     <tr>
-                        <td align="center" colspan="5"><?php echo $row->greeting . " - " . Text::_('COM_HELLOWORLD_MUST_LOGIN'); ?></td>
+                        <td align="center" colspan="5"><?php echo $row->title . " - " . Text::_('COM_QWHELLOWORLD_MUST_LOGIN'); ?></td>
                     </tr>
                 <?php else :
-                    $url = Route::_('index.php?option=com_helloworld&view=helloworld&id=' . $row->id . ':' . $row->alias . '&catid=' . $row->catid . $query_lang);
+                    $url = Route::_('index.php?option=com_qwhelloworld&view=project&id=' . $row->id . ':' . $row->alias . '&catid=' . $row->catid . $query_lang);
                     ?>
                     <tr>
                         <td align="center"><?php echo $this->pagination->getRowOffset($i); ?></td>
-                        <td align="center"><?php echo $row->greeting; ?></td>
+                        <td align="center"><?php echo $row->title; ?></td>
                         <td align="center"><?php echo $row->alias; ?></td>
                         <td align="center"><a href="<?php echo $url; ?>"><?php echo $url; ?></a></td>
                         <td align="center"><?php echo $row->id; ?></td>
@@ -86,7 +86,7 @@ else
         <?php endif; ?>
     </tbody>
 </table>
-<h1><?php echo Text::_('COM_HELLOWORLD_HEADER_SUBCATEGORIES'); ?></h1>
+<h1><?php echo Text::_('COM_QWHELLOWORLD_HEADER_SUBCATEGORIES'); ?></h1>
 <?php foreach ($this->subcategories as $subcategory) : ?>
     <h3><a href="<?php echo $subcategory->url; ?>"> <?php echo $subcategory->title; ?> </a></h3>
     <p><?php echo $subcategory->description; ?></p>

@@ -7,15 +7,15 @@
 			onchange="this.form.submit();"
 			default="lft ASC"
 			>
-			<option value="">COM_HELLOWORLD_SORT_BY</option>
-			<option value="lft ASC">COM_HELLOWORLD_ORDERING_ASC</option>
-			<option value="lft DESC">COM_HELLOWORLD_ORDERING_DESC</option>
-			<option value="greeting ASC">COM_HELLOWORLD_GREETING_ASC</option>
-			<option value="greeting DESC">COM_HELLOWORLD_GREETING_DESC</option>
-			<option value="id ASC">COM_HELLOWORLD_ID_ASC</option>
-			<option value="id DESC">COM_HELLOWORLD_ID_DESC</option>
-			<option value="alias ASC">COM_HELLOWORLD_ALIAS_ASC</option>
-			<option value="alias DESC">COM_HELLOWORLD_ALIAS_DESC</option>
+			<option value="">COM_QWHELLOWORLD_SORT_BY</option>
+			<option value="lft ASC">COM_QWHELLOWORLD_ORDERING_ASC</option>
+			<option value="lft DESC">COM_QWHELLOWORLD_ORDERING_DESC</option>
+			<option value="title ASC">COM_QWHELLOWORLD_NAME_ASC</option>
+			<option value="title DESC">COM_QWHELLOWORLD_NAME_DESC</option>
+			<option value="id ASC">COM_QWHELLOWORLD_ID_ASC</option>
+			<option value="id DESC">COM_QWHELLOWORLD_ID_DESC</option>
+			<option value="alias ASC">COM_QWHELLOWORLD_ALIAS_ASC</option>
+			<option value="alias DESC">COM_QWHELLOWORLD_ALIAS_DESC</option>
 		</field>
 		<field
 			name="limit"

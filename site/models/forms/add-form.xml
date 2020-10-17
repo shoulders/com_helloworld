@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form
-    addrulepath="/administrator/components/com_helloworld/models/rules"
-    addfieldpath="/administrator/components/com_helloworld/models/fields"
+    addrulepath="/administrator/components/com_qwhelloworld/models/rules"
+    addfieldpath="/administrator/components/com_qwhelloworld/models/fields"
     >
     <fieldset
 				name="details"
-				label="COM_HELLOWORLD_HELLOWORLD_DETAILS"
+				label="COM_QWHELLOWORLD_PROJECT_DETAILS"
 	>
 		<field
 				name="id"
 				type="hidden"
 				/>
 		<field
-				name="greeting"
+				name="title"
 				type="text"
-				label="COM_HELLOWORLD_HELLOWORLD_GREETING_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_GREETING_DESC"
+				label="COM_QWHELLOWORLD_PROJECT_TITLE_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_TITLE_DESC"
 				size="40"
 				class="inputbox"
-				validate="greeting"
+				validate="title"
 				required="true"
-				hint="COM_HELLOWORLD_HELLOWORLD_GREETING_HINT"
+				hint="COM_QWHELLOWORLD_PROJECT_TITLE_HINT"
 				default=""
 				/>
 		<field 
@@ -34,29 +34,29 @@
 		<field
 				name="catid"
 				type="category"
-				extension="com_helloworld"
+				extension="com_qwhelloworld"
 				class="inputbox"
 				default=""
-				label="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_FIELD_CATID_DESC"
+				label="COM_QWHELLOWORLD_PROJECT_FIELD_CATID_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_FIELD_CATID_DESC"
 				required="true"
 				>
 				<option value="0">JOPTION_SELECT_CATEGORY</option>
 		</field>
-		<fields name="imageinfo" label="COM_HELLOWORLD_HELLOWORLD_IMAGE_LABEL">
+		<fields name="imageinfo" label="COM_QWHELLOWORLD_PROJECT_IMAGE_LABEL">
 			<field
 				name="image"
 				type="file"
-				label="COM_HELLOWORLD_HELLOWORLD_PICTURE_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_PICTURE_DESC" 
+				label="COM_QWHELLOWORLD_PROJECT_PICTURE_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_PICTURE_DESC" 
 				accept="image/*"
 				>
 			</field>
 			<field
  				name="caption"
 				type="text"
-				label="COM_HELLOWORLD_HELLOWORLD_CAPTION_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_CAPTION_DESC"
+				label="COM_QWHELLOWORLD_PROJECT_CAPTION_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_CAPTION_DESC"
 				size="40"
 				class="inputbox"
 				>
@@ -64,8 +64,8 @@
 			<field
 				name="alt"
 				type="text"
-				label="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_ALTTEXT_DESC"
+				label="COM_QWHELLOWORLD_PROJECT_ALTTEXT_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_ALTTEXT_DESC"
 				size="40"
 				class="inputbox"
 				>
@@ -91,17 +91,17 @@
 				type="textarea"
 				rows="5"
 				cols="80"
-				label="COM_HELLOWORLD_HELLOWORLD_MESSAGE_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_MESSAGE_DESC"
-				hint="COM_HELLOWORLD_HELLOWORLD_MESSAGE_HINT"
+				label="COM_QWHELLOWORLD_PROJECT_MESSAGE_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_MESSAGE_DESC"
+				hint="COM_QWHELLOWORLD_PROJECT_MESSAGE_HINT"
 				required="true"
 				>
         </field>
         <field
 				name="captcha"
 				type="captcha"
-				label="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_DESC"
+				label="COM_QWHELLOWORLD_PROJECT_FIELD_CAPTCHA_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_FIELD_CAPTCHA_DESC"
 				validate="captcha"
                 >
 		</field>
@@ -109,8 +109,8 @@
             <field
                     name="show_category"
                     type="list"
-                    label="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_LABEL"
-                    description="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_DESC"
+                    label="COM_QWHELLOWORLD_PROJECT_FIELD_SHOW_CATEGORY_LABEL"
+                    description="COM_QWHELLOWORLD_PROJECT_FIELD_SHOW_CATEGORY_DESC"
                     default=""
                     useglobal="true"
             >
@@ -120,9 +120,9 @@
         </fields>
 		<field
 				name="parent_id"
-				type="helloworldparent"
-				label="COM_HELLOWORLD_HELLOWORLD_FIELD_PARENT_LABEL"
-				description="COM_HELLOWORLD_HELLOWORLD_FIELD_PARENT_DESC"
+				type="projectparent"
+				label="COM_QWHELLOWORLD_PROJECT_FIELD_PARENT_LABEL"
+				description="COM_QWHELLOWORLD_PROJECT_FIELD_PARENT_DESC"
 				default="1"
 				filter="int">
 		</field>

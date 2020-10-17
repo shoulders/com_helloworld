@@ -5,7 +5,7 @@ jQuery(document).ready(function() {
     
     // get the data passed from Joomla PHP
     // params is a Javascript object with properties for the map display: 
-    // centre latitude, centre longitude and zoom, and the helloworld greeting
+    // centre latitude, centre longitude and zoom, and the project title
     const params = Joomla.getOptions('params');
     ajaxurl = params.ajaxurl; 
     
@@ -38,10 +38,10 @@ jQuery(document).ready(function() {
         })
     });
     
-    // Now we add a marker for our Helloworld position
+    // Now we add a marker for our project position
     // To do that, we specify it as a Point Feature, and we add styling 
     // to define how that Feature is presented on the map
-    var helloworldPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
+    var projectPoint = new ol.Feature({geometry: new ol.geom.Point(mapCentre)});
     // we'll define the style as a red 5 point star with blue edging
     const redFill = new ol.style.Fill({
         color: 'red'
@@ -57,37 +57,37 @@ jQuery(document).ready(function() {
         radius1: 20,   // outer radius of star
         radius2: 10,   // inner radius of star
     })
-    helloworldPoint.setStyle(new ol.style.Style({
+    projectPoint.setStyle(new ol.style.Style({
         image: star
     }));
     // now we add the feature to the map via a Vector source and Vector layer
     const vectorSource = new ol.source.Vector({});
-    vectorSource.addFeature(helloworldPoint);
+    vectorSource.addFeature(projectPoint);
     const vector = new ol.layer.Vector({
         source: vectorSource
     });
     map.addLayer(vector);
     
-    // If a user clicks on the star, then we'll show the helloworld greeting
-    // The greeting will go into another HTML element, with id="greeting-container"
+    // If a user clicks on the star, then we'll show the project title
+    // The title will go into another HTML element, with id="title-container"
     // and this will be shown as an Overlay on the map
     var overlay = new ol.Overlay({
-        element: document.getElementById('greeting-container'),
+        element: document.getElementById('title-container'),
     });
     map.addOverlay(overlay);
         
-    // Finally we add the onclick listener to display the greeting when the star is clicked
+    // Finally we add the onclick listener to display the title when the star is clicked
     // The way this works is that the onclick listener is attached to the map,
     // and then it works out which Feature or Features have been hit
     map.on('click', function(e) {
         let markup = '';
         let position;
         map.forEachFeatureAtPixel(e.pixel, function(feature) {  // for each Feature hit
-            markup = params.greeting;
+            markup = params.title;
             position = feature.getGeometry().getCoordinates();
         }, {hitTolerance: 5});  // tolerance of 5 pixels
         if (markup) {
-            document.getElementById('greeting-container').innerHTML = markup;
+            document.getElementById('title-container').innerHTML = markup;
             overlay.setPosition(position);
         } else {
             overlay.setPosition();  // this hides it, if we click elsewhere
@@ -109,7 +109,7 @@ function searchHere() {
     var token = jQuery("#token").attr("name");
     jQuery.ajax({
         url: ajaxurl,
-        data: { [token]: "1", task: "mapsearch", view: "helloworld", format: "json", mapBounds: mapBounds },
+        data: { [token]: "1", task: "mapsearch", view: "project", format: "json", mapBounds: mapBounds },
         success: function(result, status, xhr) { displaySearchResults(result); },
         error: function() { console.log('ajax call failed'); },
     });
@@ -120,7 +120,7 @@ function displaySearchResults(result) {
         var html = "";
         for (var i=0; i<result.data.length; i++) {
             html += '<p><a href="' + result.data[i].url + '">' +
-                result.data[i].greeting + '</a>' +
+                result.data[i].title + '</a>' +
                 " @ " + result.data[i].latitude + 
                 ", " + result.data[i].longitude + "</p>";
         }

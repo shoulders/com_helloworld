@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_QWHELLOWORLD_PROJECT_VIEW_DEFAULT_TITLE">
+		<message>COM_QWHELLOWORLD_PROJECT_VIEW_DEFAULT_DESC</message>
+	</layout>
+	<fields
+			name="request"
+			addfieldpath="/administrator/components/com_qwhelloworld/models/fields"
+			>
+		<fieldset name="request">
+			<field
+					name="id"
+					type="modal_project"
+					required="true"
+					label="COM_QWHELLOWORLD_PROJECT_FIELD_PROJECTID_LABEL"
+					description="COM_QWHELLOWORLD_PROJECT_FIELD_PROJECTID_DESC"
+					/>
+		</fieldset>
+	</fields>
+</metadata>

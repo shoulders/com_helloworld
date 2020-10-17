@@ -1,10 +1,10 @@
 UPDATE `#__content_types` SET
-`table` = '{"special":{"dbtable":"#__helloworld","key":"id","type":"Helloworld","prefix":"HelloworldTable","config":"array()"},
+`table` = '{"special":{"dbtable":"#__com_qwhelloworld","key":"id","type":"Project","prefix":"QwhelloworldTable","config":"array()"},
 "common":{"dbtable":"#__ucm_content","key":"ucm_id","type":"Corecontent","prefix":"JTable","config":"array()"}}',
 `field_mappings` = 
 '{"common": {
     "core_content_item_id": "id",
-    "core_title": "greeting",
+    "core_title": "title",
     "core_state": "published",
     "core_alias": "alias",
     "core_language":"language", 
@@ -12,8 +12,8 @@ UPDATE `#__content_types` SET
     "core_body": "description",
     "core_catid": "catid"
   }}',
-`router` = 'HelloworldHelperRoute::getHelloworldRoute'
-WHERE `type_alias` = 'com_helloworld.helloworld';
+`router` = 'QwhelloworldHelperRoute::getQwhelloworldRoute'
+WHERE `type_alias` = 'com_qwhelloworld.project';
 
 UPDATE `#__content_types` SET
 `table` = '{"special":{"dbtable":"#__categories","key":"id","type":"Category","prefix":"JTable","config":"array()"},
@@ -52,5 +52,5 @@ UPDATE `#__content_types` SET
 	"path":"path",
 	"extension":"extension",
 	"note":"note"}}',
-`router` = 'HelloworldHelperRoute::getCategoryRoute'
-WHERE `type_alias` = 'com_helloworld.category';
+`router` = 'QwhelloworldHelperRoute::getCategoryRoute'
+WHERE `type_alias` = 'com_qwhelloworld.category';

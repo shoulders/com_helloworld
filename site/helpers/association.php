@@ -1,6 +1,6 @@
 <?php
 /**
- * Helper file for Helloworld Associations (on the site part)
+ * Helper file for Project Associations (on the site part)
  */
 
 defined('_JEXEC') or die;
@@ -12,16 +12,16 @@ use Joomla\CMS\Language\Multilanguage;
 JLoader::register('CategoryHelperAssociation', JPATH_ADMINISTRATOR . '/components/com_categories/helpers/association.php');
 
 /**
- * Helloworld Component Association Helper
+ * Qwhelloworld Component Association Helper
  *
  */
-abstract class HelloWorldHelperAssociation extends CategoryHelperAssociation
+abstract class QwhelloworldHelperAssociation extends CategoryHelperAssociation
 {
 	/**
 	 * Method to get the associations for a given item
 	 *
-	 * @param   integer  $id    Id of the item (helloworld id or catid, depending on view)
-	 * @param   string   $view  Name of the view ('helloworld' or 'category')
+	 * @param   integer  $id    Id of the item (project id or catid, depending on view)
+	 * @param   string   $view  Name of the view ('project' or 'category')
 	 *
 	 * @return  array   Array of associations for the item
 	 */
@@ -31,17 +31,17 @@ abstract class HelloWorldHelperAssociation extends CategoryHelperAssociation
 		$view = $view === null ? $input->get('view') : $view;
 		$id = empty($id) ? $input->getInt('id') : $id;
 
-		if ($view === 'helloworld')
+		if ($view === 'project')
 		{
 			if ($id)
 			{
-				$associations = Associations::getAssociations('com_helloworld', '#__helloworld', 'com_helloworld.item', $id);
+				$associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld', 'com_qwhelloworld.item', $id);
 
 				$return = array();
 
 				foreach ($associations as $tag => $item)
 				{
-					$link = 'index.php?option=com_helloworld&view=helloworld&id=' . $item->id . '&catid=' . $item->catid;
+					$link = 'index.php?option=com_qwhelloworld&view=project&id=' . $item->id . '&catid=' . $item->catid;
 					if ($item->language && $item->language !== '*' && Multilanguage::isEnabled())
 					{
 						$link .= '&lang=' . $item->language;
@@ -55,7 +55,7 @@ abstract class HelloWorldHelperAssociation extends CategoryHelperAssociation
 
 		if ($view === 'category' || $view === 'categories')
 		{
-			return self::getCategoryAssociations($id, 'com_helloworld');
+			return self::getCategoryAssociations($id, 'com_qwhelloworld');
 		}
 
 		return array();

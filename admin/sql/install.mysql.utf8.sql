@@ -1,25 +1,25 @@
-DROP TABLE IF EXISTS `#__helloworld`;
+DROP TABLE IF EXISTS `#__com_qwhelloworld`;
 
-CREATE TABLE `#__helloworld` (
+CREATE TABLE `#__com_qwhelloworld` (
 	`id`       INT(11)     NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10)     NOT NULL DEFAULT '0',
+	`title` VARCHAR(255) NOT NULL,
+	`alias`  VARCHAR(400)  NOT NULL DEFAULT '',	
+	`catid`	    int(11)    NOT NULL DEFAULT '0',	
 	`created`  DATETIME    NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`created_by`  INT(10) UNSIGNED NOT NULL DEFAULT '0',
 	`checked_out` INT(10) NOT NULL DEFAULT '0',
 	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
-	`greeting` VARCHAR(25) NOT NULL,
-	`description` VARCHAR(4000) NOT NULL DEFAULT '',
-	`alias`  VARCHAR(40)  NOT NULL DEFAULT '',
+	`published` tinyint(4) NOT NULL DEFAULT '1',
+	`access` tinyint(4) NOT NULL DEFAULT '0',	
 	`language`  CHAR(7)  NOT NULL DEFAULT '*',
 	`parent_id`	int(10)    NOT NULL DEFAULT '1',
 	`level`	int(10)    NOT NULL DEFAULT '0',
 	`path`	VARCHAR(400)    NOT NULL DEFAULT '',
 	`lft`	int(11)    NOT NULL DEFAULT '0',
-	`rgt`	int(11)    NOT NULL DEFAULT '0',
-	`published` tinyint(4) NOT NULL DEFAULT '1',
-	`access` tinyint(4) NOT NULL DEFAULT '0',
-	`catid`	    int(11)    NOT NULL DEFAULT '0',
+	`rgt`	int(11)    NOT NULL DEFAULT '0',		
 	`params`   VARCHAR(1024) NOT NULL DEFAULT '',
+	`description` VARCHAR(4000) NOT NULL DEFAULT '',
 	`image`   VARCHAR(1024) NOT NULL DEFAULT '',
 	`latitude` DECIMAL(9,7) NOT NULL DEFAULT 0.0,
 	`longitude` DECIMAL(10,7) NOT NULL DEFAULT 0.0,
@@ -29,29 +29,29 @@ CREATE TABLE `#__helloworld` (
 	AUTO_INCREMENT =0
 	DEFAULT CHARSET =utf8;
 
-CREATE UNIQUE INDEX `aliasindex` ON `#__helloworld` (`alias`, `catid`);
+CREATE UNIQUE INDEX `aliasindex` ON `#__com_qwhelloworld` (`alias`, `catid`);
 
-INSERT INTO `#__helloworld` (`greeting`,`alias`,`language`, `parent_id`, `level`, `path`, `lft`, `rgt`, `published`) VALUES
-('helloworld root','helloworld-root-alias','en-GB', 0, 0, '', 0, 5, 1),
-('Hello World!','hello-world','en-GB', 1, 1, 'hello-world', 1, 2, 0),
-('Goodbye World!','goodbye-world','en-GB', 1, 1, 'goodbye-world', 3, 4, 0);
+INSERT INTO `#__com_qwhelloworld` (`title`,`alias`, `published`, `language`, `parent_id`, `level`, `path`, `lft`, `rgt`) VALUES
+('QWHelloWorld root','qwhelloworld-root-alias', 1, '*', 0, 0, '', 0, 5),
+('Hello World!','hello-world', 0, 'en-GB', 1, 1, 'hello-world', 1, 2),
+('Goodbye World!','goodbye-world', 0, 'en-GB', 1, 1, 'goodbye-world', 3, 4);
 
 INSERT INTO `#__content_types` (`type_title`, `type_alias`, `content_history_options`, `table`, `field_mappings`, `router`) 
 VALUES
-('Helloworld', 'com_helloworld.helloworld', 
-'{"formFile":"administrator\\/components\\/com_helloworld\\/models\\/forms\\/helloworld.xml", 
+('QWHelloWorld Project', 'com_qwhelloworld.project', 
+'{"formFile":"administrator\\/components\\/com_qwhelloworld\\/models\\/forms\\/project.xml", 
 "hideFields":["asset_id","checked_out","checked_out_time","version","lft","rgt","level","path"], 
 "ignoreChanges":["checked_out", "checked_out_time", "path"],
 "convertToInt":[], 
 "displayLookup":[
 {"sourceColumn":"created_by","targetTable":"#__users","targetColumn":"id","displayColumn":"name"},
-{"sourceColumn":"parent_id","targetTable":"#__helloworld","targetColumn":"id","displayColumn":"greeting"},
+{"sourceColumn":"parent_id","targetTable":"#__com_qwhelloworld","targetColumn":"id","displayColumn":"title"},
 {"sourceColumn":"catid","targetTable":"#__categories","targetColumn":"id","displayColumn":"title"}]}',
-'{"special":{"dbtable":"#__helloworld","key":"id","type":"Helloworld","prefix":"HelloworldTable","config":"array()"},
+'{"special":{"dbtable":"#__com_qwhelloworld","key":"id","type":"Project","prefix":"QwhelloworldTable","config":"array()"},
 "common":{"dbtable":"#__ucm_content","key":"ucm_id","type":"Corecontent","prefix":"JTable","config":"array()"}}',
 '{"common": {
 	"core_content_item_id": "id",
-	"core_title": "greeting",
+	"core_title": "title",
 	"core_state": "published",
 	"core_alias": "alias",
 	"core_language":"language", 
@@ -60,8 +60,8 @@ VALUES
 	"core_access": "access",
 	"core_catid": "catid"
   }}',
-'HelloworldHelperRoute::getHelloworldRoute'),
-('Helloworld Category', 'com_helloworld.category',
+'QwhelloworldHelperRoute::getQwhelloworldRoute'),
+('QWHelloWorld Category', 'com_qwhelloworld.category',
 '{"formFile":"administrator\\/components\\/com_categories\\/models\\/forms\\/category.xml", 
 "hideFields":["asset_id","checked_out","checked_out_time","version","lft","rgt","level","path","extension"], 
 "ignoreChanges":["modified_user_id", "modified_time", "checked_out", "checked_out_time", "version", "hits", "path"],
@@ -106,4 +106,4 @@ VALUES
 	"path":"path",
 	"extension":"extension",
 	"note":"note"}}',
-'HelloworldHelperRoute::getCategoryRoute');
+'QwhelloworldHelperRoute::getCategoryRoute');

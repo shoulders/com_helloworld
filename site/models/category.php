@@ -1,6 +1,6 @@
 <?php
 /**
- * Model for displaying the helloworld messages in a given category
+ * Model for displaying projects in a given category
  */
 
 defined('_JEXEC') or die;
@@ -11,7 +11,7 @@ use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\MVC\Model\ListModel;
 use Joomla\CMS\Router\Route;
 
-class HelloworldModelCategory extends ListModel
+class QwhelloworldModelCategory extends ListModel
 {
 	public function __construct($config = array())
 	{
@@ -19,7 +19,7 @@ class HelloworldModelCategory extends ListModel
 		{
 			$config['filter_fields'] = array(
 				'id',
-				'greeting',
+				'title',
 				'alias',
 				'lft',
 			);
@@ -44,8 +44,8 @@ class HelloworldModelCategory extends ListModel
 		$query = $db->getQuery(true);
 
 		$catid = $this->getState('category.id'); 
-		$query->select('id, greeting, alias, catid, access, description, image')
-			->from($db->quoteName('#__helloworld'))
+		$query->select('id, title, alias, catid, access, description, image')
+			->from($db->quoteName('#__com_qwhelloworld'))
 			->where('catid = ' . $catid);
 
 		if (Multilanguage::isEnabled())
@@ -65,7 +65,7 @@ class HelloworldModelCategory extends ListModel
 	public function getCategoryName()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = Categories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Qwhelloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);   
 		return $categoryNode->title; 
 	}
@@ -73,7 +73,7 @@ class HelloworldModelCategory extends ListModel
 	public function getSubcategories()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = Categories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Qwhelloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);
 		$subcats = $categoryNode->getChildren(); 
         
@@ -97,7 +97,7 @@ class HelloworldModelCategory extends ListModel
 	public function getCategoryAccess()
 	{
 		$catid = $this->getState('category.id'); 
-		$categories = Categories::getInstance('Helloworld', array('access' => false));
+		$categories = Categories::getInstance('Qwhelloworld', array('access' => false));
 		$categoryNode = $categories->get($catid);   
 		return $categoryNode->access; 
 	}
@@ -153,7 +153,7 @@ class HelloworldModelCategory extends ListModel
 
 	public function getCategory()
 	{
-		$categories = Categories::getInstance('Helloworld', array());
+		$categories = Categories::getInstance('Qwhelloworld', array());
 		$category = $categories->get($this->getState('category.id', 'root'));
 		return $category;
 	}

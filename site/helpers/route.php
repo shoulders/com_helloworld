@@ -7,13 +7,13 @@ use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Router\Route;
 
 /**
- * Helloworld Component Helper file for generating the URL Routes
+ * Qwhelloworld Component Helper file for generating the URL Routes
  *
  */
-class HelloworldHelperRoute
+class QwhelloworldHelperRoute
 {
 	/**
-	 * When the Helloworld message is displayed then there is also shown a map with a Search Here button.
+	 * When the project is displayed then there is also shown a map with a Search Here button.
 	 * This function generates the URL which the Ajax call will use to perform the search. 
 	 * 
 	 */
@@ -41,7 +41,7 @@ class HelloworldHelperRoute
 		if ($menuitem)
 		{
 			$itemid = $menuitem[0]->id; 
-			$url = Route::_("index.php?Itemid=$itemid&view=helloworld&format=json");
+			$url = Route::_("index.php?Itemid=$itemid&view=project&format=json");
 			return $url;
 		}
 		else
@@ -51,13 +51,13 @@ class HelloworldHelperRoute
 	}
 
 	/**
-	 * Helper function for generating the URL to a Helloworld page
+	 * Helper function for generating the URL to a project page
 	 * This is needed for the Tags functionality
 	 */
-	public static function getHelloworldRoute($id, $catid = 0, $language = 0)
+	public static function getQwhelloworldRoute($id, $catid = 0, $language = 0)
 	{
 		// Create the link
-		$link = 'index.php?option=com_helloworld&view=helloworld&id=' . $id;
+		$link = 'index.php?option=com_qwhelloworld&view=project&id=' . $id;
 
 		if ((int) $catid > 1)
 		{
@@ -73,7 +73,7 @@ class HelloworldHelperRoute
 	}
 
 	/**
-	 * Helper function for generating the URL to a Helloworld Category page
+	 * Helper function for generating the URL to a Category page
 	 * This is needed for the Tags functionality
 	 */
 	public static function getCategoryRoute($catid, $language = 0)
@@ -93,7 +93,7 @@ class HelloworldHelperRoute
 		}
 		else
 		{
-			$link = 'index.php?option=com_helloworld&view=category&id=' . $id;
+			$link = 'index.php?option=com_qwhelloworld&view=category&id=' . $id;
 
 			if ($language && $language !== '*' && Multilanguage::isEnabled())
 			{

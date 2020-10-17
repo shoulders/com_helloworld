@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  *
  * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -15,11 +15,11 @@ use Joomla\CMS\MVC\Model\AdminModel;
 use Joomla\CMS\Table\Table;
 
 /**
- * HelloWorld Model
+ * Form Model
  *
  * @since  0.0.1
  */
-class HelloWorldModelForm extends AdminModel
+class QwhelloworldModelForm extends AdminModel
 {
 
 	/**
@@ -33,7 +33,7 @@ class HelloWorldModelForm extends AdminModel
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'HelloWorld', $prefix = 'HelloWorldTable', $config = array())
+	public function getTable($type = 'Project', $prefix = 'QwhelloworldTable', $config = array())
 	{
 		return Table::getInstance($type, $prefix, $config);
 	}
@@ -52,7 +52,7 @@ class HelloWorldModelForm extends AdminModel
 	{
 		// Get the form.
 		$form = $this->loadForm(
-			'com_helloworld.form',
+			'com_qwhelloworld.form',
 			'add-form',
 			array(
 				'control' => 'jform',
@@ -83,7 +83,7 @@ class HelloWorldModelForm extends AdminModel
 	{
 		// Check the session for previously entered form data.
 		$data = Factory::getApplication()->getUserState(
-			'com_helloworld.edit.helloworld.data',
+			'com_qwhelloworld.edit.project.data',
 			array()
 		);
 
@@ -92,17 +92,17 @@ class HelloWorldModelForm extends AdminModel
     
 	/**
 	 * Method to get the script that have to be included on the form
-	 * This returns the script associated with helloworld field greeting validation
+	 * This returns the script associated with project field title validation
 	 *
 	 * @return string	Script files
 	 */
 	public function getScript() 
 	{
-		return 'administrator/components/com_helloworld/models/forms/helloworld.js';
+		return 'administrator/components/com_qwhelloworld/models/forms/project.js';
 	}
 
 	/**
-	 * Prepare a helloworld record for saving in the database
+	 * Prepare a project record for saving in the database
 	 */
 	protected function prepareTable($table)
 	{
@@ -110,6 +110,6 @@ class HelloWorldModelForm extends AdminModel
 
 	protected function cleanCache($group = null, $client_id = 0)
 	{
-		parent::cleanCache('com_helloworld');
+		parent::cleanCache('com_qwhelloworld');
 	}
 }

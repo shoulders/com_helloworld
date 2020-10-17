@@ -1,1 +1,1 @@
-ALTER TABLE `#__helloworld` ADD COLUMN `asset_id` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `id`;
+ALTER TABLE `#__com_qwhelloworld` ADD COLUMN `asset_id` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `id`;

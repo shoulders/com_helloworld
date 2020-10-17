@@ -1,12 +1,12 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  *
- * This layout file is for displaying the front end form for capturing a new helloworld message
+ * This layout file is for displaying the front end form for capturing a new project
  *
  */
 
@@ -21,12 +21,12 @@ HTMLHelper::_('behavior.formvalidator');
 $fieldsets = $this->form->getFieldsets('com_fields');
 
 ?>
-<form action="<?php echo Route::_('index.php?option=com_helloworld&view=form&layout=edit'); ?>"
+<form action="<?php echo Route::_('index.php?option=com_qwhelloworld&view=form&layout=edit'); ?>"
     method="post" name="adminForm" id="adminForm" class="form-validate" enctype="multipart/form-data">
 
 	<div class="form-horizontal">
 		<fieldset class="adminform">
-			<legend><?php echo Text::_('COM_HELLOWORLD_LEGEND_DETAILS') ?></legend>
+			<legend><?php echo Text::_('COM_QWHELLOWORLD_LEGEND_DETAILS') ?></legend>
 			<div class="row-fluid">
 				<div class="span6">
 					<?php echo $this->form->renderFieldset('details');  ?>
@@ -42,12 +42,12 @@ $fieldsets = $this->form->getFieldsets('com_fields');
 		?>
 	<div class="btn-toolbar">
 		<div class="btn-group">
-			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('helloworld.save')">
+			<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('project.save')">
 				<span class="icon-ok"></span><?php echo Text::_('JSAVE') ?>
 			</button>
 		</div>
 		<div class="btn-group">
-			<button type="button" class="btn" onclick="Joomla.submitbutton('helloworld.cancel')">
+			<button type="button" class="btn" onclick="Joomla.submitbutton('project.cancel')">
 				<span class="icon-cancel"></span><?php echo Text::_('JCANCEL') ?>
 			</button>
 		</div>

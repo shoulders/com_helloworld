@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  *
  * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,13 +13,13 @@ defined('_JEXEC') or die('Restricted access');
 use Joomla\CMS\MVC\Controller\BaseController;
 
 /**
- * General Controller of HelloWorld component
+ * General Controller of Qwhelloworld component
  *
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  * @since       0.0.7
  */
-class HelloWorldController extends BaseController
+class QwhelloworldController extends BaseController
 {
 	/**
 	 * The default view for the display method.
@@ -27,5 +27,5 @@ class HelloWorldController extends BaseController
 	 * @var string
 	 * @since 12.2
 	 */
-	protected $default_view = 'helloworlds';
+	protected $default_view = 'projects';
 }

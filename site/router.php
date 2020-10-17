@@ -8,7 +8,7 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Associations;
 use Joomla\CMS\Language\Multilanguage;
 
-class HelloworldRouter implements RouterInterface
+class QwhelloworldRouter implements RouterInterface
 {
 
 	public function build(&$query)
@@ -35,7 +35,7 @@ class HelloworldRouter implements RouterInterface
 		{   
 			// We're on the /message menuitem.
 			// Check we've got the right parameters then set url segment = id : alias
-			if ($query['view'] == "helloworld" && isset($query['id']))
+			if ($query['view'] == "project" && isset($query['id']))
 			{
 				// we'll support the passed id being in the form id:alias
 				$segments[] = $query['id'];
@@ -57,7 +57,7 @@ class HelloworldRouter implements RouterInterface
 					unset($query['id']);
 				}
 			}
-			elseif ($query['view'] == "helloworld" && isset($query['catid']) && isset($query['id']))
+			elseif ($query['view'] == "project" && isset($query['catid']) && isset($query['id']))
 			{
 				// set this part of the url to be of the form /subcat1/subcat2/.../hello-world 
 				$pathSegments = $this->getCategorySegments($query['catid']);
@@ -85,7 +85,7 @@ class HelloworldRouter implements RouterInterface
      
 	private function getCategorySegments($catid)
 	{
-		$categories = Categories::getInstance('Helloworld', array());
+		$categories = Categories::getInstance('Qwhelloworld', array());
 		$categoryNode = $categories->get($catid);
 		if ($categoryNode)
 		{
@@ -110,22 +110,22 @@ class HelloworldRouter implements RouterInterface
         
 		if (isset($activeMenuitem) && $activeMenuitem->note == "Ajax")
 		{
-			// Expect 1 segment of the form id:alias for the helloworld record
+			// Expect 1 segment of the form id:alias for the project record
 			if ($nSegments == 1)
 			{
 				$vars['id'] = $segments[0];
-				$vars['view'] = 'helloworld';
+				$vars['view'] = 'project';
 			}
 		}
 		else
 		{
 			// Try to match the categories in the segments, starting at the root
-			$categories = Categories::getInstance('Helloworld', array());
+			$categories = Categories::getInstance('Qwhelloworld', array());
 			$matchingCategory = $categories->get('root');
             
 			// Go through the category tree, try to get a match between each segment
 			// and the id:alias of one of the children
-			// The last segment may be a category id:alias or a helloworld record id:alias
+			// The last segment may be a category id:alias or a project record id:alias
 			for ($i=0; $i < $nSegments; $i++)
 			{
 				$children = $matchingCategory->getChildren();
@@ -144,7 +144,7 @@ class HelloworldRouter implements RouterInterface
 					if ($i == $nSegments - 1)   // all but last segment are categories
 					{
 						$vars['id'] = $segments[$i];
-						$vars['view'] = 'helloworld';
+						$vars['view'] = 'project';
 					}
 					else   // something went wrong - didn't get a match at this level
 					{

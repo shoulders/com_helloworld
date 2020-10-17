@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
 	<fieldset
-		name="greetings"
-		label="COM_HELLOWORLD_CONFIG_GREETING_SETTINGS_LABEL"
-		description="COM_HELLOWORLD_CONFIG_GREETING_SETTINGS_DESC"
+		name="projects"
+		label="COM_QWHELLOWORLD_CONFIG_PROJECT_SETTINGS_LABEL"
+		description="COM_QWHELLOWORLD_CONFIG_PROJECT_SETTINGS_DESC"
 	>
 		<field
 			name="show_category"
 			type="radio"
-			label="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_LABEL"
-			description="COM_HELLOWORLD_HELLOWORLD_FIELD_SHOW_CATEGORY_DESC"
+			label="COM_QWHELLOWORLD_PROJECT_FIELD_SHOW_CATEGORY_LABEL"
+			description="COM_QWHELLOWORLD_PROJECT_FIELD_SHOW_CATEGORY_DESC"
 			default="0"
 		>
 			<option value="0">JHIDE</option>
@@ -19,8 +19,8 @@
 			name="captcha"
 			type="plugins"
             folder="captcha"
-			label="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_LABEL"
-			description="COM_HELLOWORLD_HELLOWORLD_FIELD_CAPTCHA_DESC"
+			label="COM_QWHELLOWORLD_PROJECT_FIELD_CAPTCHA_LABEL"
+			description="COM_QWHELLOWORLD_PROJECT_FIELD_CAPTCHA_DESC"
 			default="0"
 			filter="cmd"
 		>
@@ -30,8 +30,8 @@
         <field
 			name="user_to_email"
 			type="user"
-			label="COM_HELLOWORLD_HELLOWORLD_FIELD_USER_TO_EMAIL_LABEL"
-			description="COM_HELLOWORLD_HELLOWORLD_FIELD_USER_TO_EMAIL_DESC"
+			label="COM_QWHELLOWORLD_PROJECT_FIELD_USER_TO_EMAIL_LABEL"
+			description="COM_QWHELLOWORLD_PROJECT_FIELD_USER_TO_EMAIL_DESC"
 			default="0"
 		>
 		</field>
@@ -60,7 +60,7 @@
 	</fieldset>
 	<fieldset name="integration"
 		label="JGLOBAL_INTEGRATION_LABEL"
-		description="COM_HELLOWORLD_CONFIG_INTEGRATION_SETTINGS_DESC"
+		description="COM_QWHELLOWORLD_CONFIG_INTEGRATION_SETTINGS_DESC"
 	>
 		<field
 			name="show_feed_link"
@@ -85,7 +85,7 @@
 			class="inputbox"
 			validate="rules"
 			filter="rules"
-			component="com_helloworld"
+			component="com_qwhelloworld"
 			section="component"
 		/>
 	</fieldset>

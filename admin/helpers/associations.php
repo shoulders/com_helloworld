@@ -1,6 +1,6 @@
 <?php
 /**
- * The Helloworld helper file for Multilingual Associations
+ * The Qwhelloworld helper file for Multilingual Associations
  */
 
 defined('_JEXEC') or die;
@@ -11,17 +11,17 @@ use Joomla\CMS\Table\Table;
 
 Table::addIncludePath(__DIR__ . '/../tables');
 
-class HelloworldAssociationsHelper extends AssociationExtensionHelper
+class QwhelloworldAssociationsHelper extends AssociationExtensionHelper
 {
 	/**
 	 * The extension name
 	 */
-	protected $extension = 'com_helloworld';
+	protected $extension = 'com_qwhelloworld';
 
 	/**
 	 * Array of item types which have associations
 	 */
-	protected $itemTypes = array('helloworld', 'category');
+	protected $itemTypes = array('project', 'category');
 
 	/**
 	 * Has the extension association support
@@ -31,7 +31,7 @@ class HelloworldAssociationsHelper extends AssociationExtensionHelper
 	/**
 	 * Get the associated items for an item
 	 *
-	 * @param   string  $typeName  The item type, either 'helloworld' or 'category'
+	 * @param   string  $typeName  The item type, either 'project' or 'category'
 	 * @param   int     $id        The id of item for which we need the associated items
 	 *
 	 */
@@ -42,9 +42,9 @@ class HelloworldAssociationsHelper extends AssociationExtensionHelper
 		$context    = $this->extension . '.item';
 		$catidField = 'catid';
 
-		if ($typeName === 'helloworld')
+		if ($typeName === 'project')
 		{
-			$context    = 'com_helloworld.item';
+			$context    = 'com_qwhelloworld.item';
 			$catidField = 'catid';
 		}
         elseif ($typeName === 'category')
@@ -90,8 +90,8 @@ class HelloworldAssociationsHelper extends AssociationExtensionHelper
 
 		switch ($typeName)
 		{
-			case 'helloworld':
-				$table = Table::getInstance('Helloworld', 'HelloworldTable');
+			case 'project':
+				$table = Table::getInstance('Project', 'QwhelloworldTable');
 				break;
 
 			case 'category':
@@ -128,8 +128,8 @@ class HelloworldAssociationsHelper extends AssociationExtensionHelper
 		{
 			switch ($typeName)
 			{
-				case 'helloworld':
-					$fields['title'] = 'a.greeting';
+				case 'project':
+					$fields['title'] = 'a.title';
                     $fields['ordering'] = '';
                     $fields['access'] = '';
                     $fields['state'] = 'a.published';
@@ -142,10 +142,10 @@ class HelloworldAssociationsHelper extends AssociationExtensionHelper
 					$support['category'] = true;
 
 					$tables = array(
-						'a' => '#__helloworld'
+						'a' => '#__com_qwhelloworld'
 					);
 
-					$title = 'helloworld';
+					$title = 'project';
 					break;
 
 				case 'category':

@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  *
  * @copyright   Copyright (C) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -18,11 +18,11 @@ use Joomla\CMS\MVC\View\HtmlView;
 use Joomla\CMS\Uri\Uri;
 
 /**
- * HelloWorld View
- * This is the site view presenting the user with the ability to add a new Helloworld record
+ * Project View
+ * This is the site view presenting the user with the ability to add a new Project record
  * 
  */
-class HelloWorldViewForm extends HtmlView
+class QwhelloworldViewForm extends HtmlView
 {
 
 	protected $form = null;
@@ -49,8 +49,8 @@ class HelloWorldViewForm extends HtmlView
 			$this->form->setFieldAttribute('language', 'default', $lang);
 		}
 
-		// Check that the user has permissions to create a new helloworld record
-		$this->canDo = ContentHelper::getActions('com_helloworld');
+		// Check that the user has permissions to create a new project record
+		$this->canDo = ContentHelper::getActions('com_qwhelloworld');
 		if (!($this->canDo->get('core.create'))) 
 		{
 			$app = Factory::getApplication(); 
@@ -80,10 +80,10 @@ class HelloWorldViewForm extends HtmlView
 	protected function setDocument() 
 	{
 		$document = Factory::getDocument();
-		$document->setTitle(Text::_('COM_HELLOWORLD_HELLOWORLD_CREATING'));
+		$document->setTitle(Text::_('COM_QWHELLOWORLD_PROJECT_CREATING'));
 		$document->addScript(Uri::root() . $this->script);
-		$document->addScript(Uri::root() . "/administrator/components/com_helloworld"
-		                                  . "/views/helloworld/submitbutton.js");
-		Text::script('COM_HELLOWORLD_HELLOWORLD_ERROR_UNACCEPTABLE');
+		$document->addScript(Uri::root() . "/administrator/components/com_qwhelloworld"
+		                                  . "/views/project/submitbutton.js");
+		Text::script('COM_QWHELLOWORLD_PROJECT_ERROR_UNACCEPTABLE');
 	}
 }

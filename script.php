@@ -9,7 +9,7 @@ use Joomla\CMS\Language\Text;
  *
  * The name of this class is dependent on the component being installed.
  * The class name should have the component's name, directly followed by
- * the text InstallerScript (ex:. com_helloWorldInstallerScript).
+ * the text InstallerScript (ex:. Com_QwhelloworldInstallerScript).
  *
  * This class will be called by Joomla!'s installer, if specified in your component's
  * manifest file, and is used for custom automation actions in its installation process.
@@ -19,12 +19,12 @@ use Joomla\CMS\Language\Text;
  * <scriptfile>script.php</scriptfile>
  *
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_qwhelloworld
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
-class Com_HelloWorldInstallerScript
+class Com_QwhelloworldInstallerScript
 {
     /**
      * This method is called after a component is installed.
@@ -35,7 +35,7 @@ class Com_HelloWorldInstallerScript
      */
     public function install($parent) 
     {
-        $parent->getParent()->setRedirectURL('index.php?option=com_helloworld');
+        $parent->getParent()->setRedirectURL('index.php?option=com_qwhelloworld');
     }
 
     /**
@@ -47,7 +47,7 @@ class Com_HelloWorldInstallerScript
      */
     public function uninstall($parent) 
     {
-        echo '<p>' . Text::_('COM_HELLOWORLD_UNINSTALL_TEXT') . '</p>';
+        echo '<p>' . Text::_('COM_QWHELLOWORLD_UNINSTALL_TEXT') . '</p>';
     }
 
     /**
@@ -59,7 +59,7 @@ class Com_HelloWorldInstallerScript
      */
     public function update($parent) 
     {
-        echo '<p>' . Text::sprintf('COM_HELLOWORLD_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
+        echo '<p>' . Text::sprintf('COM_QWHELLOWORLD_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
     }
 
     /**
@@ -76,7 +76,7 @@ class Com_HelloWorldInstallerScript
      */
     public function preflight($type, $parent) 
     {
-        echo '<p>' . Text::_('COM_HELLOWORLD_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+        echo '<p>' . Text::_('COM_QWHELLOWORLD_PREFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 
     /**

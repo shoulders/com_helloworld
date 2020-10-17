@@ -1,6 +1,6 @@
 <?php
 /**
- * view file associated with the Syndicated Feed for a helloworld category
+ * view file associated with the Syndicated Feed for a project category
  */
 
 defined('_JEXEC') or die;
@@ -8,18 +8,18 @@ defined('_JEXEC') or die;
 use Joomla\CMS\MVC\View\CategoryFeedView;
 use Joomla\Registry\Registry;
 
-class HelloworldViewCategory extends CategoryFeedView
+class QwhelloworldViewCategory extends CategoryFeedView
 {
-	// required so that the parent class can find the helloworld content-type record containing the field mapping details
-	protected $viewName = 'helloworld';
+	// required so that the parent class can find the project content-type record containing the field mapping details
+	protected $viewName = 'project';
 
 	/**
 	 * Function overriding the parent reconcileNames() method. 
-	 * We use this to insert an html link to the helloworld image into the description
+	 * We use this to insert an html link to the project image into the description
 	 * 
-	 * The input parameter is the helloworld item as extracted from the database, passed by reference
+	 * The input parameter is the project item as extracted from the database, passed by reference
 	 *
-	 * The result of the method is that the helloworld item passed as a parameter gets its description property changed
+	 * The result of the method is that the project item passed as a parameter gets its description property changed
 	 */
 	protected function reconcileNames($item)
 	{ 

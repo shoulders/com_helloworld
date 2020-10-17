@@ -1,6 +1,6 @@
 <?php
 /*
- * View file for the view which displays a list of helloworld messages in a given category
+ * View file for the view which displays a list of projects in a given category
  */
  
 defined('_JEXEC') or die;
@@ -8,7 +8,7 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Factory;
 use Joomla\CMS\MVC\View\CategoryView;
 
-class HelloworldViewCategory extends CategoryView
+class QwhelloworldViewCategory extends CategoryView
 {
 	public function display($tpl = null)
 	{
