@@ -49,7 +49,6 @@
 
 		<languages folder="site/language">
 			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.ini</language>
-			<language tag="fr-FR">fr-FR/fr-FR.com_qwhelloworld.ini</language>
 		</languages>
 
 	<media destination="com_qwhelloworld" folder="media">		
@@ -89,8 +88,6 @@
 		<languages folder="admin/language">
 			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.sys.ini</language>
-			<language tag="fr-FR">fr-FR/fr-FR.com_qwhelloworld.ini</language>
-			<language tag="fr-FR">fr-FR/fr-FR.com_qwhelloworld.sys.ini</language>
 		</languages>
 	</administration>
 
