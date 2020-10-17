@@ -1,94 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="component" version="3.0" method="upgrade">
-
-	<name>COM_QWHELLOWORLD</name>
-	<!-- The following elements are optional and free of formatting constraints -->
-	<creationDate>January 2018</creationDate>
-	<author>John Doe</author>
-	<authorEmail>john.doe@example.org</authorEmail>
-	<authorUrl>http://www.example.org</authorUrl>
-	<copyright>Copyright Info</copyright>
-	<license>License Info</license>
-	<!--  The version string is recorded in the components table -->
+<extension type="component" method="upgrade">
+	<name>com_qwhelloworld</name><!-- Translating this is optional -->
+	<element>com_qwhelloworld</element><!-- This is not really needed, but overides component destination -->
+	<creationDate>2020-10-17</creationDate>
+	<author>QuantumWarp</author>
+	<authorEmail>no-reply@quantumwarp.com</authorEmail>
+	<authorUrl>quantumwarp.com</authorUrl>	
+	<copyright>Copyright (C) 2020 QuantumWarp. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE</license>
 	<version>1.0.0</version>
-	<!-- The description is optional and defaults to the name -->
-	<description>COM_QWHELLOWORLD_DESCRIPTION</description>
-
-	<!-- Runs on install/uninstall/update; New in 2.5 -->
+	<description>COM_QWHELLOWORLD_DESCRIPTION</description><!-- Translating this is optional -->
+	<namespace>Quantumwarp\Component\Qwhelloworld</namespace><!-- Joomla 4.0 only -->	
+	<changelogurl>https://quantumwarp.com/updates/joomla/com_qwhelloworld/changelog.xml</changelogurl><!-- Joomla 4.0 only -->
+	<dlid prefix="dlid=" suffix="&amp;dummy=my.zip"/><!-- Joomla 4.0 only -->
+	
+	<!-- install/update/uninstall Script -->
 	<scriptfile>script.php</scriptfile>
-
-	<install> <!-- Runs on install -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
-		</sql>
-	</install>
-	<uninstall> <!-- Runs on uninstall -->
-		<sql>
-			<file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file>
-		</sql>
-	</uninstall>
-	<update> <!-- Runs on update; New since J2.5 -->
-		<schemas>
-			<schemapath type="mysql">sql/mysql/updates</schemapath>
-		</schemas>
-	</update>
-
-	<!-- Site Main File Copy Section -->
-	<!-- Note the folder attribute: This attribute describes the folder
-		to copy FROM in the package to install therefore files copied
-		in this section are copied from /site/ in the package -->
-	<files folder="site">		
-		<filename>qwhelloworld.php</filename>
+	
+	<!-- Front-end Files -->
+	<files folder="site">
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>language</folder><!-- Languages (New Method) -->
+		<folder>models</folder>
+		<folder>views</folder>		
 		<filename>controller.php</filename>
 		<filename>router.php</filename>
-		<folder>controllers</folder>
-		<folder>views</folder>
-		<folder>models</folder>
-		<folder>helpers</folder>
+		<filename>qwhelloworld.php</filename>		
 	</files>
-
-		<languages folder="site/language">
-			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.ini</language>
-		</languages>
-
-	<media destination="com_qwhelloworld" folder="media">		
+	
+	<!-- Media Files -->
+	<media folder="media" destination="com_qwhelloworld">
+		<folder>css</folder>
 		<folder>images</folder>
 		<folder>js</folder>
-		<folder>css</folder>
 	</media>
+	
+	<!-- Languages (Old Method - Might not be needed) -->
+	<languages folder="site">
+		<language tag="en-GB">language/en-GB/en-GB.com_qwhelloworld.ini</language>		
+	</languages>
 
+	<!-- Administration Area -->
 	<administration>
-		<!-- Administration Menu Section -->
+		
+		<!-- Menu -->
 		<menu link='index.php?option=com_qwhelloworld' img="../media/com_qwhelloworld/images/tux-16x16.png">COM_QWHELLOWORLD_MENU</menu>
-		<!-- Administration Main File Copy Section -->
-		<!-- Note the folder attribute: This attribute describes the folder
-			to copy FROM in the package to install therefore files copied
-			in this section are copied from /admin/ in the package -->
+		<submenu>
+			<menu link="option=com_qwhelloworld">COM_QWHELLOWORLD_SUBMENU_PROJECTS</menu>
+			<menu link="option=com_categories&amp;view=categories&amp;extension=com_qwhelloworld">COM_QWHELLOWORLD_SUBMENU_CATEGORIES</menu>
+		</submenu>
+
+		<!-- Files -->
 		<files folder="admin">
-			<!-- Admin Main File Copy Section -->			
-			<filename>config.xml</filename>
-			<filename>qwhelloworld.php</filename>
-			<filename>controller.php</filename>
-			<filename>access.xml</filename>
-			<!-- SQL files section -->
-			<folder>sql</folder>
-			<!-- tables files section -->
-			<folder>tables</folder>
-			<!-- models files section -->
-			<folder>models</folder>
-			<!-- views files section -->
-			<folder>views</folder>
-			<!-- controllers files section -->
 			<folder>controllers</folder>
-			<!-- helpers files section -->
-			<folder>helpers</folder>
-			<!-- layout files section -->
-			<folder>layouts</folder>
+			<folder>helpers</folder>			
+			<folder>language</folder><!-- Languages (New Method) -->
+			<folder>layouts</folder>			
+			<folder>models</folder>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>views</folder>			
+			<filename>access.xml</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>qwhelloworld.php</filename>
 		</files>
-		<languages folder="admin/language">
-			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_qwhelloworld.sys.ini</language>
+
+		<!-- Languages (Old Method - Might not be needed) -->
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_qwhelloworld.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_qwhelloworld.sys.ini</language>
 		</languages>
-	</administration>
+		
+	</administration>	
+	
+	<!-- Database: Install, Update, Uninstall -->
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file><!-- MySQL -->
+		</sql>
+	</install>		 
+	<update> 
+		<schemas>
+			<schemapath type="mysql">sql/mysql/updates</schemapath><!-- MySQL -->
+		</schemas> 
+	</update>	
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file><!-- MySQL -->
+		</sql>
+	</uninstall>
+	
+	<!-- Update Server -->		
+	<updateservers>
+		<server type="extension" priority="1" name="QWHelloWorld (Component)">https://quantumwarp.com/updates/joomla/qwhelloworld/update.xml</server>
+	</updateservers>		
 
 </extension>
+
