@@ -92,5 +92,6 @@ class Com_QwhelloworldInstallerScript
      */
     function postflight($type, $parent) 
     {
+		echo '<p>' . JText::_('COM_QWHELLOWORLD_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 }
