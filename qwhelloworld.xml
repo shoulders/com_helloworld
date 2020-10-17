@@ -19,17 +19,17 @@
 
 	<install> <!-- Runs on install -->
 		<sql>
-			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/mysql/install.mysql.utf8.sql</file>
 		</sql>
 	</install>
 	<uninstall> <!-- Runs on uninstall -->
 		<sql>
-			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+			<file driver="mysql" charset="utf8">sql/mysql/uninstall.mysql.utf8.sql</file>
 		</sql>
 	</uninstall>
 	<update> <!-- Runs on update; New since J2.5 -->
 		<schemas>
-			<schemapath type="mysql">sql/updates/mysql</schemapath>
+			<schemapath type="mysql">sql/mysql/updates</schemapath>
 		</schemas>
 	</update>
 
@@ -37,8 +37,7 @@
 	<!-- Note the folder attribute: This attribute describes the folder
 		to copy FROM in the package to install therefore files copied
 		in this section are copied from /site/ in the package -->
-	<files folder="site">
-		<filename>index.html</filename>
+	<files folder="site">		
 		<filename>qwhelloworld.php</filename>
 		<filename>controller.php</filename>
 		<filename>router.php</filename>
@@ -53,8 +52,7 @@
 			<language tag="fr-FR">fr-FR/fr-FR.com_qwhelloworld.ini</language>
 		</languages>
 
-	<media destination="com_qwhelloworld" folder="media">
-		<filename>index.html</filename>
+	<media destination="com_qwhelloworld" folder="media">		
 		<folder>images</folder>
 		<folder>js</folder>
 		<folder>css</folder>
@@ -68,8 +66,7 @@
 			to copy FROM in the package to install therefore files copied
 			in this section are copied from /admin/ in the package -->
 		<files folder="admin">
-			<!-- Admin Main File Copy Section -->
-			<filename>index.html</filename>
+			<!-- Admin Main File Copy Section -->			
 			<filename>config.xml</filename>
 			<filename>qwhelloworld.php</filename>
 			<filename>controller.php</filename>

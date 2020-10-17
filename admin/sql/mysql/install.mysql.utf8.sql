@@ -1,5 +1,3 @@
-DROP TABLE IF EXISTS `#__com_qwhelloworld`;
-
 CREATE TABLE `#__com_qwhelloworld` (
 	`id`       INT(11)     NOT NULL AUTO_INCREMENT,
 	`asset_id` INT(10)     NOT NULL DEFAULT '0',
@@ -24,16 +22,13 @@ CREATE TABLE `#__com_qwhelloworld` (
 	`latitude` DECIMAL(9,7) NOT NULL DEFAULT 0.0,
 	`longitude` DECIMAL(10,7) NOT NULL DEFAULT 0.0,
 	PRIMARY KEY (`id`)
-)
-	ENGINE =MyISAM
-	AUTO_INCREMENT =0
-	DEFAULT CHARSET =utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
 CREATE UNIQUE INDEX `aliasindex` ON `#__com_qwhelloworld` (`alias`, `catid`);
 
 INSERT INTO `#__com_qwhelloworld` (`title`,`alias`, `published`, `language`, `parent_id`, `level`, `path`, `lft`, `rgt`) VALUES
 ('QWHelloWorld root','qwhelloworld-root-alias', 1, '*', 0, 0, '', 0, 5),
-('Hello World!','hello-world', 0, 'en-GB', 1, 1, 'hello-world', 1, 2),
+('Hello World!','hello-world', 0, '*', 1, 1, 'hello-world', 1, 2),
 ('Goodbye World!','goodbye-world', 0, 'en-GB', 1, 1, 'goodbye-world', 3, 4);
 
 INSERT INTO `#__content_types` (`type_title`, `type_alias`, `content_history_options`, `table`, `field_mappings`, `router`) 

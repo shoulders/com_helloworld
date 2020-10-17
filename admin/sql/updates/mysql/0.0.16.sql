@@ -1,2 +1,0 @@
-ALTER TABLE`#__com_qwhelloworld` ADD COLUMN `created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00' AFTER `asset_id`;
-ALTER TABLE`#__com_qwhelloworld` ADD COLUMN `created_by` INT(10) UNSIGNED NOT NULL DEFAULT '0' AFTER `created`;
