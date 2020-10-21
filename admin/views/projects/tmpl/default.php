@@ -98,7 +98,7 @@ JLoader::register('JHtmlProjects', JPATH_ADMINISTRATOR . '/components/com_qwhell
             </thead>
             <tfoot>
                 <tr>
-                    <td colspan="5">
+                    <td colspan="12">
                         <?php echo $this->pagination->getListFooter(); ?>
                     </td>
                 </tr>
