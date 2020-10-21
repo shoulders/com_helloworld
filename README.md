@@ -59,116 +59,121 @@ I will reguard the follwing items as single words becasue it makes class names a
 ### Do these
 - `#__com_qwhelloworld` --> `#__com_joomlatime`
 
-## Files and their Purpose
+## Files, Folders and their Purpose
+
+This table will allow you to easily see whgat a file is for.
 
 File | Purpose
 -- | --
+
 CHANGELOG.md
-LICENSE |  
+LICENSE
 qwhelloworld.xml
 README.md
 script.php
-admin/ |
+admin/ | 
 admin/access.xml
 admin/config.xml
 admin/controller.php
-admin/controllers
-admin/helpers
-admin/language
-admin/layouts
-admin/models
 admin/qwhelloworld.php
-admin/sql
-admin/tables
-admin/views
+admin/controllers/ | 
 admin/controllers/project.php
 admin/controllers/projects.php
+admin/helpers/ | 
 admin/helpers/associations.php
-admin/helpers/html
 admin/helpers/qwhelloworld.php
+admin/helpers/html/ | 
 admin/helpers/html/projects.php
-admin/language/en-GB
+admin/language/ | 
+admin/language/en-GB/ | 
 admin/language/en-GB/en-GB.com_qwhelloworld.ini
 admin/language/en-GB/en-GB.com_qwhelloworld.sys.ini
+admin/layouts/ | 
 admin/layouts/position.php
-admin/models/fields
-admin/models/forms
+admin/models/ | 
 admin/models/project.php
 admin/models/projects.php
-admin/models/rules
-admin/models/fields/modal
+admin/models/fields/ | 
 admin/models/fields/project.php
 admin/models/fields/projectordering.php
 admin/models/fields/projectparent.php
+admin/models/fields/modal/ | 
 admin/models/fields/modal/project.php
+admin/models/forms/ | 
 admin/models/forms/filter_projects.xml
 admin/models/forms/project.js
 admin/models/forms/project.xml
+admin/models/rules/ |
 admin/models/rules/title.php
-admin/sql/mysql
+admin/sql/ | 
+admin/sql/mysql/ | 
 admin/sql/mysql/install.mysql.utf8.sql
 admin/sql/mysql/uninstall.mysql.utf8.sql
-admin/sql/mysql/updates
+admin/sql/mysql/updates/ | 
 admin/sql/mysql/updates/1.0.0.sql
+admin/tables/ | 
 admin/tables/project.php
-admin/views/project
-admin/views/projects
-admin/views/project/submitbutton.js
-admin/views/project/tmpl
+admin/views/ | 
+admin/views/project/ | 
 admin/views/project/view.html.php
+admin/views/project/submitbutton.js
+admin/views/project/tmpl/ | 
 admin/views/project/tmpl/edit.php
-admin/views/projects/tmpl
+admin/views/projects/ | 
 admin/views/projects/view.html.php
+admin/views/projects/tmpl/ |
 admin/views/projects/tmpl/default.php
 admin/views/projects/tmpl/default_batch_body.php
 admin/views/projects/tmpl/default_batch_footer.php
 admin/views/projects/tmpl/modal.php
-media | 
-media/css
-media/images
-media/js |  
+media/ | 
+media/css/ | 
 media/css/openstreetmap.css
 media/css/qwhelloworld.css
+media/images/ | 
 media/images/tux-16x16.png
 media/images/tux-48x48.png
+media/js/ | 
 media/js/admin-projects-modal.js
 media/js/openstreetmap.js
 media/js/qwhelloworld.js
 site/ | 
 site/controller.php
-site/controllers
-site/helpers
-site/language
-site/models
 site/qwhelloworld.php
 site/router.php
-site/views
+site/controllers/ | 
 site/controllers/project.php
+site/helpers/ | 
 site/helpers/association.php
 site/helpers/category.php
 site/helpers/route.php
-site/language/en-GB
+site/language/ | 
+site/language/en-GB/ | 
 site/language/en-GB/en-GB.com_qwhelloworld.ini
+site/models/ | 
 site/models/category.php
 site/models/form.php
-site/models/forms
 site/models/project.php
+site/models/forms/ | 
 site/models/forms/add-form.xml
 site/models/forms/filter_category.xml
-site/views/category
-site/views/form
-site/views/project
-site/views/category/tmpl
+site/views/ | 
+site/views/category/ | 
 site/views/category/view.feed.php
 site/views/category/view.html.php
+site/views/category/tmpl/ | 
 site/views/category/tmpl/default.php
 site/views/category/tmpl/default.xml
-site/views/form/tmpl
+site/views/form/ | 
 site/views/form/view.html.php
+site/views/form/tmpl/ | 
 site/views/form/tmpl/edit.php
 site/views/form/tmpl/edit.xml
-site/views/project/tmpl
+site/views/project/ | 
 site/views/project/view.html.php
 site/views/project/view.json.php
+site/views/project/tmpl/ | 
 site/views/project/tmpl/default.php
 site/views/project/tmpl/default.xml
+
+
