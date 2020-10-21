@@ -64,6 +64,7 @@ I will reguard the follwing items as single words becasue it makes class names a
 This table will allow you to easily see whgat a file is for.
 
 File | Purpose
+
 -- | --
 
 CHANGELOG.md
