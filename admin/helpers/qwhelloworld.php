@@ -75,15 +75,15 @@ abstract class QwhelloworldHelper extends ContentHelper
     /**
 	 * Get the actions
 	 */
-	public static function getActions($component = '', $section = '', $messageId = 0)
+	public static function getActions($component = '', $section = '', $projectId = 0)
 	{	
 		$result	= new CMSObject;
 
-		if (empty($messageId)) {
+		if (empty($projectId)) {
 			$assetName = 'com_qwhelloworld';
 		}
 		else {
-			$assetName = 'com_qwhelloworld.message.'.(int) $messageId;
+			$assetName = 'com_qwhelloworld.stream.'.(int) $projectId;
 		}
 
 		$actions = Access::getActions('com_qwhelloworld', 'component');
