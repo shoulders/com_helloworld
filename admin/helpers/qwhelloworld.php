@@ -20,10 +20,6 @@ use Joomla\CMS\Object\CMSObject;
 /**
  * Qwhelloworld component helper.
  *
- * @param   string  $submenu  The name of the active view.
- *
- * @return  void
- *
  * @since   1.6
  */
 abstract class QwhelloworldHelper extends ContentHelper
@@ -31,28 +27,31 @@ abstract class QwhelloworldHelper extends ContentHelper
 	/**
 	 * Configure the Linkbar.
 	 *
-	 * @return Bool
+	 * @param   string  $vName  The name of the active view.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
 	 */
-
-	public static function addSubmenu($submenu) 
+	public static function addSubmenu($vName) 
 	{
 		JHtmlSidebar::addEntry(
 			Text::_('COM_QWHELLOWORLD_SUBMENU_PROJECTS'),
 			'index.php?option=com_qwhelloworld',
-			$submenu == 'projects'
+			$vName == 'projects'
 		);
 
 		JHtmlSidebar::addEntry(
 			Text::_('COM_QWHELLOWORLD_SUBMENU_CATEGORIES'),
 			'index.php?option=com_categories&view=categories&extension=com_qwhelloworld',
-			$submenu == 'categories'
+			$vName == 'categories'
 		);
 
 		// Set some global property
 		$document = Factory::getDocument();
 		$document->addStyleDeclaration('.icon-48-qwhelloworld ' .
 										'{background-image: url(../media/com_qwhelloworld/images/tux-48x48.png);}');
-		if ($submenu == 'categories') 
+		if ($vName == 'categories') 
 		{
 			$document->setTitle(Text::_('COM_QWHELLOWORLD_ADMINISTRATION_CATEGORIES'));
 		}
@@ -61,19 +60,23 @@ abstract class QwhelloworldHelper extends ContentHelper
 			JHtmlSidebar::addEntry(
 				Text::_('JGLOBAL_FIELDS'),
 				'index.php?option=com_fields&context=com_qwhelloworld.project',
-				$submenu == 'fields.fields'
+				$vName == 'fields.fields'
 			);
 
 			JHtmlSidebar::addEntry(
 				Text::_('JGLOBAL_FIELD_GROUPS'),
 				'index.php?option=com_fields&view=groups&context=com_qwhelloworld.project',
-				$submenu == 'fields.groups'
+				$vName == 'fields.groups'
 			);
 		}
 	}
     
     /**
-	 * Get the actions
+	 * Gets a list of the actions that can be performed.
+	 *
+	 * @return  CMSObject
+	 *
+	 * @since	2.5.4
 	 */
 	public static function getActions($component = '', $section = '', $projectId = 0)
 	{	
@@ -83,7 +86,7 @@ abstract class QwhelloworldHelper extends ContentHelper
 			$assetName = 'com_qwhelloworld';
 		}
 		else {
-			$assetName = 'com_qwhelloworld.stream.'.(int) $projectId;
+			$assetName = 'com_qwhelloworld.project.'.(int) $projectId;
 		}
 
 		$actions = Access::getActions('com_qwhelloworld', 'component');
@@ -96,6 +99,39 @@ abstract class QwhelloworldHelper extends ContentHelper
 		return $result;
 	}
 
+	/**
+	 * Returns a valid section for streams. If it is not valid then null
+	 * is returned.
+	 *
+	 * @param   string  $section  The section to get the mapping for
+	 * @param   object  $item     optional item object
+	 *
+	 * @return  string|null  The new section
+	 *
+	 * @since   3.7.0
+	 */
+	public static function validateSection($section, $item)
+	{
+		if (Factory::getApplication()->isClient('site') && $section == 'form')
+		{
+			return 'project';
+		}
+		
+		if ($section != 'project' && $section != 'form')
+		{
+			return null;
+		}
+
+		return $section;
+	}
+	
+	/**
+	 * Returns valid contexts
+	 *
+	 * @return  array
+	 *
+	 * @since   3.7.0
+	 */
 	public static function getContexts()
 	{
 		Factory::getLanguage()->load('com_qwhelloworld', JPATH_ADMINISTRATOR);
@@ -106,19 +142,5 @@ abstract class QwhelloworldHelper extends ContentHelper
 		);
 
 		return $contexts;
-	}
-	
-	public static function validateSection($section, $item)
-	{
-		if (Factory::getApplication()->isClient('site') && $section == 'form')
-		{
-			return 'project';
-		}
-		if ($section != 'project' && $section != 'form')
-		{
-			return null;
-		}
-
-		return $section;
-	}
+	}	
 }
