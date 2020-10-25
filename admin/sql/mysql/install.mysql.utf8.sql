@@ -25,13 +25,14 @@ CREATE TABLE `#__com_qwhelloworld_projects` (
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 DEFAULT COLLATE=utf8mb4_unicode_ci;
 
-/* What is this for? */
+/* What is this for? - ordering or earlier */
 CREATE UNIQUE INDEX `aliasindex` ON `#__com_qwhelloworld_projects` (`alias`, `catid`);
 
+/* We added the published column to the INTO statement in order to set the published column, in the qwhelloworld root record, to 1 otherwise you won't be able to publish items. */
 INSERT INTO `#__com_qwhelloworld_projects` (`title`,`alias`, `published`, `language`, `parent_id`, `level`, `path`, `lft`, `rgt`) VALUES
-('QWHelloWorld root','qwhelloworld-root-alias', 1, '*', 0, 0, '', 0, 5),
-('Hello World!','hello-world', 0, '*', 1, 1, 'hello-world', 1, 2),
-('Goodbye World!','goodbye-world', 0, 'en-GB', 1, 1, 'goodbye-world', 3, 4);
+('QWHelloWorld root', 'qwhelloworld-root-alias', 1, '*', 0, 0, '', 0, 5),
+('Hello World!', 'hello-world', 0, '*', 1, 1, 'hello-world', 1, 2),
+('Goodbye World!', 'goodbye-world', 0, 'en-GB', 1, 1, 'goodbye-world', 3, 4);
 
 /* Content History (Versions) / Tags? - for Projects, Categories */
 INSERT INTO `#__content_types` (`type_title`, `type_alias`, `content_history_options`, `table`, `field_mappings`, `router`) 

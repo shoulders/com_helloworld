@@ -45,11 +45,11 @@
 			label="COM_QWHELLOWORLD_LIST_FULL_ORDERING"
 			description="COM_QWHELLOWORLD_LIST_FULL_ORDERING_DESC"
 			onchange="this.form.submit();"
-			default="title ASC"
+			default="lft ASC"
 			>
 			<option value="">JGLOBAL_SORT_BY</option>
-			<option value="ordering ASC">COM_QWHELLOWORLD_ORDERING_ASC</option>
-			<option value="ordering DESC">COM_QWHELLOWORLD_ORDERING_DESC</option>
+			<option value="lft ASC">COM_QWHELLOWORLD_ORDERING_ASC</option>
+			<option value="lft DESC">COM_QWHELLOWORLD_ORDERING_DESC</option>
 			<option value="title ASC">COM_QWHELLOWORLD_TITLE_ASC</option>
 			<option value="title DESC">COM_QWHELLOWORLD_TITLE_DESC</option>
 			<option value="id ASC">JGRID_HEADING_ID_ASC</option>

@@ -110,22 +110,6 @@ class QwhelloworldModelProject extends AdminModel
 	}
 	
 	/**
-	 * Method to override generateTitle() because the Qwhelloworld component uses 'greeting' as the title field
-	 * 
-	 * Reverted to using title field
-	 * 
-	 * @depreceated
-	 * 
-	 */
-	/*public function generateTitle($categoryId, $table)
-	{
-		// Alter the title & alias
-		$data = $this->generateNewTitle($categoryId, $table->alias, $table->greeting);
-		$table->greeting = $data['0'];
-		$table->alias = $data['1'];
-	}*/
-
-	/**
 	 * Method to override getItem to allow us to convert the JSON-encoded image information
 	 * in the database record into an array for subsequent prefilling of the edit form
 	 * We also use this method to prefill the tags and associations
