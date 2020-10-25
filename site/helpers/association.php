@@ -35,7 +35,7 @@ abstract class QwhelloworldHelperAssociation extends CategoryHelperAssociation
 		{
 			if ($id)
 			{
-				$associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld', 'com_qwhelloworld.item', $id);
+				$associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld_projects', 'com_qwhelloworld.item', $id);
 
 				$return = array();
 

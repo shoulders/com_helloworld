@@ -35,7 +35,7 @@ class JFormFieldProjectOrdering extends JFormFieldList
 		$db = Factory::getDbo();
 		$query = $db->getQuery(true)
 			->select('a.id AS value, a.title AS text')
-			->from('#__com_qwhelloworld AS a')
+			->from('#__com_qwhelloworld_projects AS a')
 			->where('a.parent_id =' . (int) $parent_id);
 
 		$query->order('a.lft ASC');

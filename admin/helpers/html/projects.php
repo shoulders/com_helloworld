@@ -14,7 +14,7 @@ use Joomla\CMS\Router\Route;
 
 JLoader::register('QwhelloworldHelper', JPATH_ADMINISTRATOR . '/components/com_qwhelloworld/helpers/qwhelloworld.php');
 
-class JHtmlProjects
+class HtmlProjects
 {
 	/**
 	 * Render the list of associated items
@@ -31,7 +31,7 @@ class JHtmlProjects
 		$html = '';
 
 		// Get the associations
-		if ($associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld', 'com_qwhelloworld.item', (int)$id))
+		if ($associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld_projects', 'com_qwhelloworld.item', (int)$id))
 		{
 			foreach ($associations as $tag => $associated)
 			{
@@ -44,7 +44,7 @@ class JHtmlProjects
 				->select('h.*')
 				->select('l.sef as lang_sef')
 				->select('l.lang_code')
-				->from('#__com_qwhelloworld as h')
+				->from('#__com_qwhelloworld_projects as h')
 				->select('cat.title as category_title')
 				->join('LEFT', '#__categories as cat ON cat.id=h.catid')
 				->where('h.id IN (' . implode(',', array_values($associations)) . ')')

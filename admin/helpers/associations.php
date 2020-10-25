@@ -77,7 +77,7 @@ class QwhelloworldAssociationsHelper extends AssociationExtensionHelper
 	 * @param   string  $typeName  The item type
 	 * @param   int     $id        The id of item for which we need the associated items
 	 *
-	 * @return  JTable object associated with the record id passed in
+	 * @return  Table object associated with the record id passed in
 	 */
 	public function getItem($typeName, $id)
 	{
@@ -142,7 +142,7 @@ class QwhelloworldAssociationsHelper extends AssociationExtensionHelper
 					$support['category'] = true;
 
 					$tables = array(
-						'a' => '#__com_qwhelloworld'
+						'a' => '#__com_qwhelloworld_projects'
 					);
 
 					$title = 'project';

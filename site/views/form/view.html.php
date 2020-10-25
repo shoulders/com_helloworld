@@ -29,7 +29,7 @@ class QwhelloworldViewForm extends HtmlView
 	protected $canDo;
 
 	/**
-	 * Display the Hello World view
+	 * Display the Project view
 	 *
 	 * @param   string  $tpl  The name of the layout file to parse.
 	 *

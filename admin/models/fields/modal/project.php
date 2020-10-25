@@ -48,7 +48,7 @@ class JFormFieldModal_Project extends FormField
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true)
 				->select($db->quoteName('title'))
-				->from($db->quoteName('#__com_qwhelloworld'))
+				->from($db->quoteName('#__com_qwhelloworld_projects'))
 				->where($db->quoteName('id') . ' = ' . (int) $value);
 			$db->setQuery($query);
 

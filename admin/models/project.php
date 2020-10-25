@@ -152,7 +152,7 @@ class QwhelloworldModelProject extends AdminModel
 
 			if ($item->id != null)
 			{
-				$associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld', 'com_qwhelloworld.item', (int)$item->id);
+				$associations = Associations::getAssociations('com_qwhelloworld', '#__com_qwhelloworld_projects', 'com_qwhelloworld.item', (int)$item->id);
 
 				foreach ($associations as $tag => $association)
 				{
@@ -170,7 +170,7 @@ class QwhelloworldModelProject extends AdminModel
 	 * @param   string  $prefix  The class prefix. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A JTable object
+	 * @return  Table  A Table object
 	 *
 	 * @since   1.6
 	 */

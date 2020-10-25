@@ -57,13 +57,13 @@ I will reguard the follwing items as single words becasue it makes class names a
 - JoomlaTime
 
 ### Do these
-- `#__com_qwhelloworld` --> `#__com_joomlatime`
+- `#__com_qwhelloworld_projects` --> `#__com_joomlatime_streams`
 
 ## Files, Folders and their Purpose
 
-This table will allow you to easily see whgat a file is for.
+This table will allow you to easily see what a file of folder is for.
 
-File | Purpose
+File/Folder | Purpose
 -- | --
 CHANGELOG.md
 LICENSE
@@ -80,7 +80,7 @@ admin/controllers/project.php
 admin/controllers/projects.php
 admin/helpers/ | 
 admin/helpers/associations.php
-admin/helpers/qwhelloworld.php
+admin/helpers/qwhelloworld.php | This must be present upon install and controls the display of the SubMenu, including in com_fields and com_categories
 admin/helpers/html/ | 
 admin/helpers/html/projects.php
 admin/language/ | 

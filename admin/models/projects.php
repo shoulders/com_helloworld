@@ -92,7 +92,7 @@ class QwhelloworldModelProjects extends ListModel
                           a.checked_out as checked_out, a.checked_out_time as checked_out_time, a.catid as catid,
                           a.lft as lft, a.rgt as rgt, a.parent_id as parent_id, a.level as level, a.path as path,
                           a.image as imageInfo, a.latitude as latitude, a.longitude as longitude, a.alias as alias, a.language as language')
-                          ->from($db->quoteName('#__com_qwhelloworld', 'a'));
+                          ->from($db->quoteName('#__com_qwhelloworld_projects', 'a'));
 
                 // Join over the categories.
                 $query->select($db->quoteName('c.title', 'category_title'))

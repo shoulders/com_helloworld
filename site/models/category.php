@@ -45,7 +45,7 @@ class QwhelloworldModelCategory extends ListModel
 
 		$catid = $this->getState('category.id'); 
 		$query->select('id, title, alias, catid, access, description, image')
-			->from($db->quoteName('#__com_qwhelloworld'))
+			->from($db->quoteName('#__com_qwhelloworld_projects'))
 			->where('catid = ' . $catid);
 
 		if (Multilanguage::isEnabled())

@@ -33,7 +33,7 @@ class QwhelloworldViewProject extends HtmlView
     protected $canDo;
 
 	/**
-	 * Display the Hello World view
+	 * Display the Project view
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *

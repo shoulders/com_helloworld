@@ -25,13 +25,13 @@ class JFormFieldProjectParent extends JFormFieldList
 		$db = Factory::getDbo();
 		$query = $db->getQuery(true)
 			->select('DISTINCT(a.id) AS value, a.title AS text, a.level, a.lft')
-			->from('#__com_qwhelloworld AS a');
+			->from('#__com_qwhelloworld_projects AS a');
 		
 		// Prevent parenting to children of this record, or to itself
 		// If this record has lft = x and rgt = y, then its children have lft > x and rgt < y
 		if ($id = $this->form->getValue('id'))
 		{
-			$query->join('LEFT', $db->quoteName('#__com_qwhelloworld') . ' AS h ON h.id = ' . (int) $id)
+			$query->join('LEFT', $db->quoteName('#__com_qwhelloworld_projects') . ' AS h ON h.id = ' . (int) $id)
 				->where('NOT(a.lft >= h.lft AND a.rgt <= h.rgt)');
 		}
 		

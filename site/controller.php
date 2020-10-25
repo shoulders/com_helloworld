@@ -16,7 +16,7 @@ use Joomla\CMS\Response\JsonResponse;
 use Joomla\CMS\Session\Session;
 
 /**
- * Hello World Component Controller
+ * QWHelloWorld Component Controller
  *
  * @since  0.0.1
  */

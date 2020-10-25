@@ -31,7 +31,7 @@ class QwhelloworldTableProject extends Nested
 	function __construct(&$db)
 	{
 		JObserverMapper::addObserverClassToClass('JTableObserverContenthistory', 'QwhelloworldTableProject', array('typeAlias' => 'com_qwhelloworld.project'));
-		parent::__construct('#__com_qwhelloworld', 'id', $db);
+		parent::__construct('#__com_qwhelloworld_projects', 'id', $db);
 		Tags::createObserver($this, array('typeAlias' => 'com_qwhelloworld.project'));
 	}
 	/**
@@ -39,7 +39,7 @@ class QwhelloworldTableProject extends Nested
 	 *
 	 * @param       array           named array
 	 * @return      null|string     null is operation was satisfactory, otherwise returns an error
-	 * @see JTable:bind
+	 * @see Table:bind
 	 * @since 1.5
 	 */
 	public function bind($array, $ignore = '')
@@ -138,7 +138,7 @@ class QwhelloworldTableProject extends Nested
 	 *
 	 * @return	int
 	 */
-	protected function _getAssetParentId(JTable $table = NULL, $id = NULL)
+	protected function _getAssetParentId(Table $table = NULL, $id = NULL)
 	{
 		// We will retrieve the parent-asset from the Asset-table
 		$assetParent = Table::getInstance('Asset');

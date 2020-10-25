@@ -62,7 +62,7 @@ class QwhelloworldModelProject extends ItemModel
 	 * @param   string  $prefix  The class prefix. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A JTable object
+	 * @return  Table  A Table object
 	 *
 	 * @since   1.6
 	 */
@@ -85,7 +85,7 @@ class QwhelloworldModelProject extends ItemModel
 			$query->select('h.title, h.params, h.image as image, c.title as category, c.access as catAccess, 
 						h.latitude as latitude, h.longitude as longitude, h.access as access,
 						h.id as id, h.alias as alias, h.catid as catid, h.parent_id as parent_id, h.level as level, h.description as description')
-				  ->from('#__com_qwhelloworld as h')
+				  ->from('#__com_qwhelloworld_projects as h')
 				  ->leftJoin('#__categories as c ON h.catid=c.id')
 				  ->where('h.id=' . (int)$id);
 
@@ -191,7 +191,7 @@ class QwhelloworldModelProject extends ItemModel
 			$db    = Factory::getDbo();
 			$query = $db->getQuery(true);
 			$query->select('h.id, h.alias, h.catid, h.title, h.latitude, h.longitude, h.access')
-			   ->from('#__com_qwhelloworld as h')
+			   ->from('#__com_qwhelloworld_projects as h')
 			   ->where('h.latitude > ' . $mapbounds['minlat'] . 
 				' AND h.latitude < ' . $mapbounds['maxlat'] .
 				' AND h.longitude > ' . $mapbounds['minlng'] .

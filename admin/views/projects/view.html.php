@@ -26,7 +26,7 @@ use Joomla\CMS\Toolbar\ToolbarHelper;
 class QwhelloworldViewProjects extends HtmlView
 {
         /**
-         * Display the Hello World view
+         * Display the Projects view
          *
          * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
          *

@@ -29,7 +29,7 @@ class QwhelloworldModelForm extends AdminModel
 	 * @param   string  $prefix  The class prefix. Optional.
 	 * @param   array   $config  Configuration array for model. Optional.
 	 *
-	 * @return  JTable  A JTable object
+	 * @return  Table  A Table object
 	 *
 	 * @since   1.6
 	 */
