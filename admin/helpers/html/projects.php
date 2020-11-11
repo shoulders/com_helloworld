@@ -14,7 +14,7 @@ use Joomla\CMS\Router\Route;
 
 JLoader::register('QwhelloworldHelper', JPATH_ADMINISTRATOR . '/components/com_qwhelloworld/helpers/qwhelloworld.php');
 
-class HtmlProjects
+class JHtmlProjects
 {
 	/**
 	 * Render the list of associated items

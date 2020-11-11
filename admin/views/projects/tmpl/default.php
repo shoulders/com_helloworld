@@ -34,7 +34,7 @@ if ($saveOrder)
 }
 $assoc = Associations::isEnabled();
 $authorFieldwidth = $assoc ? "10%" : "25%";
-JLoader::register('HtmlProjects', JPATH_ADMINISTRATOR . '/components/com_qwhelloworld/helpers/html/projects.php');
+JLoader::register('JHtmlProjects', JPATH_ADMINISTRATOR . '/components/com_qwhelloworld/helpers/html/projects.php');
 ?>
 <form action="index.php?option=com_qwhelloworld&view=projects" method="post" id="adminForm" name="adminForm">
         <div id="j-sidebar-container" class="span2">

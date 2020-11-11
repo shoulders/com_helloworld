@@ -36,7 +36,7 @@ class Com_QwhelloworldInstallerScript
     public function install($parent) 
     {
         //$parent->getParent()->setRedirectURL('index.php?option=com_qwhelloworld');
-		echo '<p>' . JText::_('COM_HELLOWORLD_INSTALL_TEXT') . '</p>';
+		echo '<p>' . JText::_('COM_QWHELLOWORLD_INSTALL_TEXT') . '</p>';
     }
 
     /**
